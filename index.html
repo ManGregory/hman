@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hryhorii Manaienkov</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Hryhorii Manaienkov — AI Engineer at ISD building LLM solutions for an agentic SDLC. Team lead, full-stack Java/Angular and .NET background.">
+<meta name="description" content="Hryhorii Manaienkov, AI Engineer at ISD building LLM solutions for an agentic SDLC. Team lead with a full-stack Java/Angular and .NET background.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: one 760px reading column; a mono date gutter turns the experience list into a commit-log timeline. One bold element: the career diff. */
 :root {
@@ -24,7 +24,7 @@
   --del-bg: #F9E6E6;
   --hunk: #5A4FB0;
   --hunk-bg: #ECEAFA;
-  --display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --display: "Geologica", "Helvetica Neue", Arial, sans-serif;
   --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -118,7 +118,7 @@ h2 {
   color: var(--muted); margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line);
   display: flex; justify-content: space-between; gap: 12px;
 }
-h2 span:last-child { letter-spacing: .02em; text-transform: none; }
+h2 span:last-child:not(:first-child) { letter-spacing: .02em; text-transform: none; }
 .about p { margin: 0; max-width: 64ch; }
 .about { gap: 14px; }
 
@@ -183,146 +183,242 @@ footer {
   .ln:nth-child(6) { animation-delay: .40s; } .ln:nth-child(7) { animation-delay: .48s; }
   @keyframes in { from { opacity: .35; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
 }
+
+[hidden] { display: none !important; }
+/* Top bar + language switch */
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.langs { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.langs button {
+  font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--muted);
+  background: transparent; border: 0; padding: 7px 11px; cursor: pointer;
+}
+.langs button + button { border-left: 1px solid var(--line); }
+.langs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.langs button:hover:not([aria-pressed="true"]) { color: var(--ink); }
+.lang-block { display: flex; flex-direction: column; gap: clamp(48px, 8vw, 72px); }
+.org-text { margin: 8px 0 0; max-width: 62ch; }
+.print-only { display: none; }
+.btn.pdf svg { fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* Print / PDF: always light, compact, two A4 pages */
+@page { size: A4; margin: 13mm 15mm 12mm; }
+@media print {
+  :root:not(#_), :root[data-theme]:not(#_) {
+    --bg: #FFFFFF; --surface: #FFFFFF; --ink: #14171D; --muted: #555D6C; --line: #D6DAE2;
+    --accent: #2C44C2; --add: #1C7448; --add-bg: #E9F5EE; --del: #A8353A; --del-bg: #FBEDED;
+    --hunk: #5A4FB0; --hunk-bg: #F0EEFB; color-scheme: light;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  body { font-size: 9.6pt; line-height: 1.45; background: #fff; }
+  .wrap { max-width: none; padding: 0 !important; gap: 0; }
+  .lang-block { gap: 15pt; }
+  .langs, .links { display: none !important; }
+  .print-only { display: block; }
+  .hero { gap: 7pt; }
+  h1 { font-size: 25pt; }
+  .role { font-size: 12pt; margin: -4pt 0 0; }
+  .thesis { font-size: 10.4pt; max-width: none; }
+  .contact { font-family: var(--mono); font-size: 8.6pt; color: var(--muted); margin: 0; }
+  .contact a { color: var(--accent); text-decoration: none; }
+  .diff { font-size: 8.4pt; line-height: 1.6; break-inside: avoid; }
+  .diff-head { padding: 5pt 10pt; font-size: 8pt; }
+  section { gap: 9pt; }
+  h2 { font-size: 8pt; padding-bottom: 5pt; }
+  .about { gap: 6pt; }
+  .about p, .r p, .org-text { max-width: none; }
+  .log { gap: 13pt; }
+  .org { grid-template-columns: 96pt minmax(0,1fr); gap: 2pt 16pt; }
+  .org-name { font-size: 12.5pt; }
+  .org-meta, .r-date { font-size: 8pt; }
+  .roles { margin-top: 8pt; }
+  .r { grid-template-columns: 96pt minmax(0,1fr); gap: 2pt 16pt; padding-bottom: 11pt; break-inside: avoid; }
+  .r h3 { font-size: 10.6pt; }
+  .r p { margin-top: 3pt; }
+  .r-body::before { top: 5pt; }
+  .stack { margin-top: 5pt; gap: 4pt; }
+  .stack li { font-size: 7.6pt; padding: 0 5pt; }
+  .skills { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9pt 18pt; }
+  .skill h3 { font-size: 9.8pt; margin-bottom: 2pt; }
+  .skill p { font-size: 9pt; }
+  .two { gap: 22pt; break-inside: avoid; }
+  .list li { padding: 4pt 0; }
+  .list .v { font-size: 8pt; }
+  footer { display: none; }
+  #experience-en, #experience-uk { break-before: auto; }
+  .skills-sec, .two { break-inside: avoid; }
+}
 </style>
+
 </head>
 <body>
-
-
 <main class="wrap">
-
+<div class="lang-block" data-lang="en" lang="en">
   <header class="hero">
-    <div class="eyebrow"><span><span class="dot">●</span> AI Engineer @ ISD</span><span>Ukraine</span><span>UTC+2</span></div>
+    <div class="topbar">
+      <div class="eyebrow"><span><span class="dot">●</span> AI Engineer @ ISD</span><span>Ukraine</span><span>UTC+2</span></div>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button><button type="button" data-set-lang="uk" aria-pressed="false">УКР</button>
+      </div>
+    </div>
     <h1>Hryhorii Manaienkov</h1>
     <p class="role"><strong>AI Engineer</strong> · LLM solutions for agentic SDLC</p>
     <p class="thesis">I build LLM-powered solutions for an agentic software development lifecycle: AI agents that work alongside engineers, starting with automated code review. Before that, more than a decade of product engineering, including leading a team&rsquo;s move from desktop to web.</p>
+    <p class="print-only contact"><a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a></p>
     <div class="links">
-      <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn" href="#experience">Experience</a>
-      <a class="btn" href="#skills">Skills</a>
+      <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
+      <a class="btn pdf" href="resume-en.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Download PDF</a>
+      <a class="btn" href="#experience-en">Experience</a>
+      <a class="btn" href="#skills-en">Skills</a>
     </div>
   </header>
 
   <div class="diff" role="img" aria-label="Career summary written as a code diff, from desktop .NET developer to team lead of a web platform to AI engineer">
     <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span><span><span class="stat-add">+4</span> <span class="stat-del">−1</span></span></div>
-    <div class="diff-body">
-      <div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, laboratory information systems @@</span></div>
-      <div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Clinical data has to be correct.</span></div>
-      <div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Desktop-only: C# / .NET / WinForms</span></div>
-      <div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Web: Java · Spring Boot · Angular · Oracle</span></div>
-      <div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Team lead since 2020: led the desktop → web shift</span></div>
-      <div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Taught C# at Hillel IT School</span></div>
-      <div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM solutions for agentic SDLC</span></div>
-    </div>
+    <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, laboratory information systems @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Clinical data has to be correct.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Desktop-only: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Web: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Team lead since 2020: led the desktop → web shift</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Taught C# at Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM solutions for agentic SDLC</span></div></div>
   </div>
 
-  <section class="about" aria-labelledby="about-h">
-    <h2 id="about-h"><span>About</span><span>since 2012</span></h2>
-    <p>I started in 2012 at PJSC KZRK, automating internal business processes in a Delphi ERP. In 2015 I joined ISD to work on a laboratory information system for genetic and clinical labs. I began on the C#/.NET genetics module, became its team lead in 2020, and in 2022 led the whole team&rsquo;s transformation from desktop development to a web-oriented Java and Angular project.</p>
-    <p>In 2026 I moved to ISD&rsquo;s AI team, where I build LLM-powered solutions for an agentic SDLC. I lead the code-review automation workstream: an AI reviewer built on Claude Code that runs in our GitHub pipeline.</p>
+  <section class="about">
+    <h2><span>About</span><span>since 2012</span></h2>
+    <p>I started in 2012 at PJSC KZRK, automating internal business processes in a Delphi ERP. In 2015 I joined ISD to work on a laboratory information system for genetic and clinical labs. I began on the C#/.NET genetics module, became its team lead in 2020, and in 2022 led the whole team&rsquo;s transformation from desktop development to a web-oriented Java and Angular project.</p><p>In 2026 I moved to ISD&rsquo;s AI team, where I build LLM-powered solutions for an agentic SDLC. I lead the code-review automation workstream: an AI reviewer built on Claude Code that runs in our GitHub pipeline.</p>
   </section>
 
-  <section id="experience" aria-labelledby="exp-h">
-    <h2 id="exp-h"><span>Experience</span><span>newest first</span></h2>
-    <div class="log">
-
-      <article class="org">
+  <section id="experience-en">
+    <h2><span>Experience</span><span>newest first</span></h2>
+    <div class="log"><article class="org">
         <div class="org-meta">2015 – now<br>11 yrs 1 mo</div>
-        <div>
-          <h3 class="org-name">ISD</h3>
-          <p class="org-sub">Full-time</p>
-        </div>
-        <div class="roles">
-          <div class="r now">
+        <div><h3 class="org-name">ISD</h3><p class="org-sub">Full-time</p></div>
+        <div class="roles"><div class="r now">
             <div class="r-date">Jun 2026 – now</div>
-            <div class="r-body">
-              <h3>AI Engineer <span class="pill">Current</span></h3>
-              <p>Building LLM-powered solutions for an agentic SDLC on ISD&rsquo;s AI team: AI agents that take part in the development process alongside engineers. I lead the code-review automation workstream, an AI reviewer built on Claude Code.</p>
-              <ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul>
-            </div>
-          </div>
-          <div class="r now">
+            <div class="r-body"><h3>AI Engineer <span class="pill">Current</span></h3><p>Building LLM-powered solutions for an agentic SDLC on ISD&rsquo;s AI team: AI agents that take part in the development process alongside engineers. I lead the code-review automation workstream, an AI reviewer built on Claude Code.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul></div>
+          </div><div class="r now">
             <div class="r-date">May 2022 – now</div>
-            <div class="r-body">
-              <h3>Team Lead / Full Stack Developer</h3>
-              <p>Led the transformation of my team from desktop to web: the whole team moved from the C#/.NET genetics module to the Results area of LIS (Laboratory Information System), a full-stack Java and Angular product for managing and reporting lab results. Owned technical direction, code review and delivery; mentored the team through the new stack and coordinated with product and adjacent areas.</p>
-              <ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul>
-            </div>
-          </div>
-          <div class="r">
+            <div class="r-body"><h3>Team Lead / Full Stack Developer</h3><p>Led the transformation of my team from desktop to web: the whole team moved from the C#/.NET genetics module to the Results area of LIS (Laboratory Information System), a full-stack Java and Angular product for managing and reporting lab results. Owned technical direction, code review and delivery; mentored the team through the new stack and coordinated with product and adjacent areas.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul></div>
+          </div><div class="r">
             <div class="r-date">Oct 2015 – May 2022</div>
-            <div class="r-body">
-              <h3>.NET Developer → Team Lead</h3>
-              <p>Built and maintained the genetics module of the LIS product: a desktop application for genetic test workflows, results processing and reporting. Worked across the C#/.NET stack with a focus on reliability and clinical data correctness. Became the team&rsquo;s lead in 2020.</p>
-              <ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="org">
+            <div class="r-body"><h3>.NET Developer → Team Lead</h3><p>Built and maintained the genetics module of the LIS product: a desktop application for genetic test workflows, results processing and reporting. Worked across the C#/.NET stack with a focus on reliability and clinical data correctness. Became the team&rsquo;s lead in 2020.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul></div>
+          </div></div>
+      </article><article class="org">
         <div class="org-meta">Feb – Sep 2020<br>8 mo</div>
-        <div>
-          <h3 class="org-name">Hillel IT School</h3>
-          <p class="org-sub">Course Instructor · Part-time</p>
-          <p style="margin:8px 0 0;max-width:62ch">Taught C# / .NET programming courses, taking students from fundamentals to their first hands-on projects.</p>
-        </div>
-      </article>
-
-      <article class="org">
+        <div><h3 class="org-name">Hillel IT School</h3><p class="org-sub">Course Instructor · Part-time</p>
+          <p class="org-text">Taught C# / .NET programming courses, taking students from fundamentals to their first hands-on projects.</p></div>
+      </article><article class="org">
         <div class="org-meta">Jun 2012 – Oct 2015<br>3 yrs 5 mo</div>
-        <div>
-          <h3 class="org-name">PJSC KZRK</h3>
-          <p class="org-sub">Software Engineer</p>
-          <p style="margin:8px 0 0;max-width:62ch">Developed and maintained the company&rsquo;s in-house ERP in Delphi, automating internal business processes: budgeting, tenders, procurement and related workflows.</p>
-          <ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul>
-        </div>
-      </article>
-
-    </div>
+        <div><h3 class="org-name">PJSC KZRK</h3><p class="org-sub">Software Engineer</p>
+          <p class="org-text">Developed and maintained the company&rsquo;s in-house ERP in Delphi, automating internal business processes: budgeting, tenders, procurement and related workflows.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul></div>
+      </article></div>
   </section>
 
-  <section id="skills" aria-labelledby="skills-h">
-    <h2 id="skills-h"><span>Skills</span><span>by area</span></h2>
-    <div class="skills">
-      <div class="skill"><h3>AI developer tooling</h3><p>Agentic SDLC, Claude &amp; Anthropic API, Claude Code, MCP servers, LLM-based code review, GitHub Actions automation</p></div>
-      <div class="skill"><h3>Backend</h3><p>Java, Spring Boot, C#, .NET, REST services, enterprise transaction patterns</p></div>
-      <div class="skill"><h3>Frontend &amp; desktop</h3><p>Angular, TypeScript, WinForms, Delphi</p></div>
-      <div class="skill"><h3>Data</h3><p>Oracle (incl. performance tuning), SQL, T-SQL</p></div>
-      <div class="skill"><h3>Infrastructure</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div>
-      <div class="skill"><h3>Leadership</h3><p>Team lead since 2020, desktop-to-web transformation, technical direction, code review, mentoring, teaching</p></div>
-    </div>
+  <section id="skills-en" class="skills-sec">
+    <h2><span>Skills</span><span>by area</span></h2>
+    <div class="skills"><div class="skill"><h3>AI developer tooling</h3><p>Agentic SDLC, Claude &amp; Anthropic API, Claude Code, MCP servers, LLM-based code review, GitHub Actions automation</p></div><div class="skill"><h3>Backend</h3><p>Java, Spring Boot, C#, .NET, REST services, enterprise transaction patterns</p></div><div class="skill"><h3>Frontend &amp; desktop</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Data</h3><p>Oracle (incl. performance tuning), SQL, T-SQL</p></div><div class="skill"><h3>Infrastructure</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Leadership</h3><p>Team lead since 2020, desktop-to-web transformation, technical direction, code review, mentoring, teaching</p></div></div>
   </section>
 
   <div class="two">
-    <section aria-labelledby="cert-h">
-      <h2 id="cert-h"><span>Certifications</span></h2>
-      <ul class="list">
-        <li><span class="k">Prometheus and Grafana · robot_dreams</span><span class="v">Oct 2025</span></li>
-        <li><span class="k">Programming with C# · edX</span><span class="v">Honor Code</span></li>
-        <li><span class="k">Querying with Transact-SQL · edX</span><span class="v">Honor Code</span></li>
-        <li><span class="k">Intro to Computer Science and Programming · edX</span><span class="v">Honor Code</span></li>
-        <li><span class="k">Introduction to Linux · edX</span><span class="v">Honor Code</span></li>
-      </ul>
-    </section>
-    <section aria-labelledby="edu-h">
-      <h2 id="edu-h"><span>Education &amp; languages</span></h2>
-      <ul class="list">
-        <li><span class="k">Kryvyi Rih Technical University</span><span class="v">University</span></li>
-        <li><span class="k">Ukrainian</span><span class="v">Native</span></li>
-        <li><span class="k">English</span><span class="v"></span></li>
-      </ul>
-    </section>
+    <section><h2><span>Certifications</span></h2><ul class="list"><li><span class="k">Prometheus and Grafana · robot_dreams</span><span class="v">Oct 2025</span></li><li><span class="k">Programming with C# · edX</span><span class="v">Honor Code</span></li><li><span class="k">Querying with Transact-SQL · edX</span><span class="v">Honor Code</span></li><li><span class="k">Intro to Computer Science and Programming · edX</span><span class="v">Honor Code</span></li><li><span class="k">Introduction to Linux · edX</span><span class="v">Honor Code</span></li></ul></section>
+    <section><h2><span>Education &amp; languages</span></h2><ul class="list"><li><span class="k">Kryvyi Rih Technical University</span><span class="v">University</span></li><li><span class="k">Ukrainian</span><span class="v">Native</span></li><li><span class="k">English</span><span class="v"></span></li></ul></section>
   </div>
 
   <footer>
     <span>© 2026 Hryhorii Manaienkov</span>
-    <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov</a>
+    <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a>
   </footer>
+</div>
+<div class="lang-block" data-lang="uk" lang="uk" hidden>
+  <header class="hero">
+    <div class="topbar">
+      <div class="eyebrow"><span><span class="dot">●</span> AI Engineer @ ISD</span><span>Україна</span><span>UTC+2</span></div>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button><button type="button" data-set-lang="uk" aria-pressed="true">УКР</button>
+      </div>
+    </div>
+    <h1>Григорій Манаєнков</h1>
+    <p class="role"><strong>AI Engineer</strong> · LLM-рішення для agentic SDLC</p>
+    <p class="thesis">Створюю LLM-рішення для агентного життєвого циклу розробки (agentic SDLC): AI-агентів, які працюють поруч з інженерами, починаючи з автоматизованого code review. До цього понад десять років продуктової розробки, зокрема перехід команди з десктопу на веб під моїм керівництвом.</p>
+    <p class="print-only contact"><a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a></p>
+    <div class="links">
+      <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
+      <a class="btn pdf" href="resume-uk.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Завантажити PDF</a>
+      <a class="btn" href="#experience-uk">Досвід</a>
+      <a class="btn" href="#skills-uk">Навички</a>
+    </div>
+  </header>
 
+  <div class="diff" role="img" aria-label="Кар'єра у вигляді диффу коду: від .NET-розробника десктопу до тімліда веб-платформи і AI-інженера">
+    <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span><span><span class="stat-add">+4</span> <span class="stat-del">−1</span></span></div>
+    <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, лабораторні інформаційні системи @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Клінічні дані мають бути правильними.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Лише десктоп: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Веб: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Тімлід з 2020: перевів команду з десктопу на веб</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Викладав C# у Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM-рішення для agentic SDLC</span></div></div>
+  </div>
+
+  <section class="about">
+    <h2><span>Про мене</span><span>з 2012</span></h2>
+    <p>Почав у 2012 році в ПАТ «КЗРК», автоматизуючи внутрішні бізнес-процеси в ERP на Delphi. У 2015 прийшов в ISD працювати над лабораторною інформаційною системою для генетичних і клінічних лабораторій. Починав з модуля генетики на C#/.NET, у 2020 став тімлідом команди, а в 2022 очолив перехід усієї команди з десктопної розробки на веб-проєкт на Java та Angular.</p><p>У 2026 перейшов в AI-команду ISD, де створюю LLM-рішення для agentic SDLC. Керую напрямом автоматизації code review: це AI-рев&rsquo;юер на базі Claude Code, що працює в нашому GitHub-пайплайні.</p>
+  </section>
+
+  <section id="experience-uk">
+    <h2><span>Досвід</span><span>від новішого</span></h2>
+    <div class="log"><article class="org">
+        <div class="org-meta">2015 – досі<br>11 р. 1 міс.</div>
+        <div><h3 class="org-name">ISD</h3><p class="org-sub">Повна зайнятість</p></div>
+        <div class="roles"><div class="r now">
+            <div class="r-date">черв. 2026 – досі</div>
+            <div class="r-body"><h3>AI Engineer <span class="pill">Зараз</span></h3><p>Створюю LLM-рішення для agentic SDLC в AI-команді ISD: AI-агентів, які беруть участь у процесі розробки поруч з інженерами. Керую напрямом автоматизації code review, де розробляємо AI-рев&rsquo;юера на базі Claude Code.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul></div>
+          </div><div class="r now">
+            <div class="r-date">трав. 2022 – досі</div>
+            <div class="r-body"><h3>Team Lead / Full Stack Developer</h3><p>Очолив перехід своєї команди з десктопу на веб: уся команда перейшла з модуля генетики на C#/.NET у напрям Results системи LIS (Laboratory Information System), full-stack продукт на Java та Angular для керування результатами лабораторних досліджень і звітності. Відповідав за технічний напрям, code review і поставку; менторив команду під час переходу на новий стек і координувався з продуктом та суміжними напрямами.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul></div>
+          </div><div class="r">
+            <div class="r-date">жовт. 2015 – трав. 2022</div>
+            <div class="r-body"><h3>.NET Developer → Team Lead</h3><p>Розробляв і підтримував модуль генетики продукту LIS: десктопний застосунок для процесів генетичних досліджень, обробки результатів і звітності. Працював зі стеком C#/.NET з фокусом на надійність і коректність клінічних даних. З 2020 року тімлід команди.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul></div>
+          </div></div>
+      </article><article class="org">
+        <div class="org-meta">лют. – вер. 2020<br>8 міс.</div>
+        <div><h3 class="org-name">Hillel IT School</h3><p class="org-sub">Викладач курсу · Часткова зайнятість</p>
+          <p class="org-text">Викладав курси програмування на C# / .NET: від основ до перших практичних проєктів студентів.</p></div>
+      </article><article class="org">
+        <div class="org-meta">черв. 2012 – жовт. 2015<br>3 р. 5 міс.</div>
+        <div><h3 class="org-name">ПАТ «КЗРК»</h3><p class="org-sub">Software Engineer</p>
+          <p class="org-text">Розробляв і підтримував внутрішню ERP-систему компанії на Delphi, автоматизуючи бізнес-процеси: бюджетування, тендери, закупівлі та суміжні процеси.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul></div>
+      </article></div>
+  </section>
+
+  <section id="skills-uk" class="skills-sec">
+    <h2><span>Навички</span><span>за напрямами</span></h2>
+    <div class="skills"><div class="skill"><h3>AI-інструменти для розробки</h3><p>Agentic SDLC, Claude та Anthropic API, Claude Code, MCP-сервери, code review на базі LLM, автоматизація GitHub Actions</p></div><div class="skill"><h3>Бекенд</h3><p>Java, Spring Boot, C#, .NET, REST-сервіси, корпоративні патерни роботи з транзакціями</p></div><div class="skill"><h3>Фронтенд і десктоп</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Дані</h3><p>Oracle (зокрема оптимізація продуктивності), SQL, T-SQL</p></div><div class="skill"><h3>Інфраструктура</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Лідерство</h3><p>Тімлід з 2020, перехід команди з десктопу на веб, технічний напрям, code review, менторство, викладання</p></div></div>
+  </section>
+
+  <div class="two">
+    <section><h2><span>Сертифікати</span></h2><ul class="list"><li><span class="k">Prometheus and Grafana · robot_dreams</span><span class="v">жовт. 2025</span></li><li><span class="k">Programming with C# · edX</span><span class="v">Honor Code</span></li><li><span class="k">Querying with Transact-SQL · edX</span><span class="v">Honor Code</span></li><li><span class="k">Intro to Computer Science and Programming · edX</span><span class="v">Honor Code</span></li><li><span class="k">Introduction to Linux · edX</span><span class="v">Honor Code</span></li></ul></section>
+    <section><h2><span>Освіта та мови</span></h2><ul class="list"><li><span class="k">Криворізький технічний університет</span><span class="v">Університет</span></li><li><span class="k">Українська</span><span class="v">Рідна</span></li><li><span class="k">Англійська</span><span class="v"></span></li></ul></section>
+  </div>
+
+  <footer>
+    <span>© 2026 Григорій Манаєнков</span>
+    <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a>
+  </footer>
+</div>
 </main>
 
+<script>
+(function () {
+  var LANGS = ["en", "uk"];
+  function store(v) { try { if (v) localStorage.setItem("lang", v); return localStorage.getItem("lang"); } catch (e) { return null; } }
+  function fromHash() { var h = (location.hash || "").slice(1); return LANGS.indexOf(h) > -1 ? h : null; }
+  function apply(lang) {
+    document.querySelectorAll(".lang-block").forEach(function (b) { b.hidden = b.dataset.lang !== lang; });
+    document.querySelectorAll("[data-set-lang]").forEach(function (btn) { btn.setAttribute("aria-pressed", String(btn.dataset.setLang === lang)); });
+    document.documentElement.lang = lang;
+    document.title = lang === "uk" ? "Григорій Манаєнков" : "Hryhorii Manaienkov";
+  }
+  var nav = (navigator.language || "").toLowerCase();
+  var initial = fromHash() || store() || (/^(uk|ru)/.test(nav) ? "uk" : "en");
+  apply(initial);
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-set-lang]");
+    if (!btn) return;
+    var l = btn.dataset.setLang;
+    apply(l); store(l);
+    try { history.replaceState(null, "", "#" + l); } catch (err) {}
+  });
+  window.addEventListener("hashchange", function () { var h = fromHash(); if (h) apply(h); });
+})();
+</script>
 </body>
 </html>
