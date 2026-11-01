@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://hman.pro/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Hryhorii Manaienkov · AI Engineer">
-<meta property="og:description" content="LLM solutions for agentic SDLC. Team lead, full-stack Java/Angular and .NET background.">
+<meta property="og:description" content="Agentic SDLC: AI agents in the software development process. 14 years of production engineering, six as a team lead.">
 <meta property="og:url" content="https://hman.pro/">
 <meta property="og:image" content="https://hman.pro/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -16,104 +16,114 @@
 <meta name="theme-color" content="#F3F4F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E1116" media="(prefers-color-scheme: dark)">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Hryhorii Manaienkov, AI Engineer at ISD building LLM solutions for an agentic SDLC. Team lead with a full-stack Java/Angular and .NET background.">
+<meta name="description" content="Hryhorii Manaienkov, AI Engineer at ISD building LLM solutions for an agentic SDLC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
-/* Layout: one 760px reading column; a mono date gutter turns the experience list into a commit-log timeline. One bold element: the career diff. */
+/* Layout: 1200px page = sticky 320px identity sidebar + wide main column; experience drawn as a git graph. */
 :root {
-  --bg: #F3F4F7;
-  --surface: #FFFFFF;
-  --ink: #14171D;
-  --muted: #586070;
-  --line: #DADEE6;
-  --accent: #2C44C2;
-  --add: #1C7448;
-  --add-bg: #E2F2E9;
-  --del: #A8353A;
-  --del-bg: #F9E6E6;
-  --hunk: #5A4FB0;
-  --hunk-bg: #ECEAFA;
+  --bg: #F3F4F7; --surface: #FFFFFF; --ink: #14171D; --muted: #586070; --line: #DADEE6;
+  --accent: #2C44C2; --add: #1C7448; --add-bg: #E2F2E9; --del: #A8353A; --del-bg: #F9E6E6;
+  --hunk: #5A4FB0; --hunk-bg: #ECEAFA; --amber: #A35D00;
   --display: "Geologica", "Helvetica Neue", Arial, sans-serif;
   --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --lane: 18px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0E1116; --surface: #161A21; --ink: #E6E9EF; --muted: #9AA2B1; --line: #29303B;
     --accent: #95A8FF; --add: #63D194; --add-bg: #12271C; --del: #F28C8F; --del-bg: #2C1618;
-    --hunk: #B7AEFF; --hunk-bg: #1E1B36; color-scheme: dark;
+    --hunk: #B7AEFF; --hunk-bg: #1E1B36; --amber: #F2B45E; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0E1116; --surface: #161A21; --ink: #E6E9EF; --muted: #9AA2B1; --line: #29303B;
   --accent: #95A8FF; --add: #63D194; --add-bg: #12271C; --del: #F28C8F; --del-bg: #2C1618;
-  --hunk: #B7AEFF; --hunk-bg: #1E1B36; color-scheme: dark;
+  --hunk: #B7AEFF; --hunk-bg: #1E1B36; --amber: #F2B45E; color-scheme: dark;
 }
-
 * { box-sizing: border-box; }
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-.wrap {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
-  padding-block: clamp(40px, 8vw, 88px) 56px;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(48px, 8vw, 72px);
-}
+[hidden] { display: none !important; }
+html { scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-/* Hero */
-.hero { display: flex; flex-direction: column; gap: 22px; }
-.eyebrow {
-  font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px;
+.lang-block {
+  max-width: 1200px; margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 0 80px;
 }
+
+/* Sidebar */
+.side {
+  position: sticky; top: env(safe-area-inset-top, 0px); align-self: start;
+  max-height: 100vh; overflow-y: auto; scrollbar-width: thin;
+  padding-block: 56px; display: flex; flex-direction: column; gap: 28px;
+}
+.side > * { flex-shrink: 0; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .eyebrow .dot { color: var(--add); }
-h1 {
-  font-family: var(--display); font-weight: 700;
-  font-size: clamp(2.5rem, 7.5vw, 4rem); line-height: 1.02; letter-spacing: -0.025em;
-  margin: 0; text-wrap: balance;
-}
-.role { font-family: var(--display); font-weight: 500; font-size: clamp(1.15rem, 2.6vw, 1.4rem); color: var(--muted); margin: -10px 0 0; }
+.controls { display: inline-flex; gap: 6px; align-items: center; }
+.langs { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.langs button { font: 500 12px/1 var(--mono); letter-spacing: .04em; color: var(--muted); background: transparent; border: 0; padding: 7px 9px; cursor: pointer; }
+.langs button + button { border-left: 1px solid var(--line); }
+.langs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.icon-btn { display: inline-grid; place-items: center; width: 30px; height: 28px; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--muted); cursor: pointer; }
+.icon-btn:hover { color: var(--ink); border-color: var(--accent); }
+.icon-btn svg, .btn svg, .kbd svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.btn svg.fill { fill: currentColor; stroke: none; }
+h1 { font: 700 clamp(2.3rem, 4.4vw, 3rem)/1.02 var(--display); letter-spacing: -.025em; margin: 0; text-wrap: balance; }
+.role { font: 500 1.08rem/1.4 var(--display); color: var(--muted); margin: -16px 0 0; }
 .role strong { color: var(--ink); font-weight: 600; }
-.thesis { font-size: 1.12rem; max-width: 60ch; margin: 0; }
-.links { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 13.5px; font-weight: 500;
-  padding: 9px 14px; border-radius: 6px; text-decoration: none;
-  border: 1px solid var(--line); color: var(--ink); background: var(--surface);
-}
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.glance { margin: 0; display: flex; flex-direction: column; }
+.g-row { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.g-row:last-child { border-bottom: 0; }
+.glance dt { font: 500 11.5px/1.7 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.glance dd { margin: 0; font-size: 14.5px; line-height: 1.45; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.fact { background: var(--surface); padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+.fact b { font: 700 1.5rem/1 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.fact span { font: 500 11.5px/1.3 var(--mono); color: var(--muted); }
+.side h2 { margin: 0 0 10px; }
+.links { display: flex; flex-direction: column; gap: 8px; }
+.btn { display: flex; align-items: center; gap: 10px; font: 500 13.5px/1.2 var(--mono); padding: 9px 12px; border-radius: 6px; text-decoration: none; border: 1px solid var(--line); color: var(--ink); background: var(--surface); min-width: 0; }
 .btn:hover { border-color: var(--accent); text-decoration: none; }
-.btn svg { width: 16px; height: 16px; flex: none; fill: currentColor; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.mail { display: flex; gap: 6px; }
+.mail .btn { flex: 1; }
+.mail-addr { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mail .icon-btn { height: auto; width: 40px; flex: none; }
+.copy.done { color: var(--add); border-color: var(--add); }
+.kbd { margin-left: auto; font: 500 11px var(--mono); color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+.palette-btn { justify-content: flex-start; color: var(--muted); }
+.mini { list-style: none; margin: 0; padding: 0; }
+.mini li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14.5px; }
+.mini li:last-child { border-bottom: 0; }
+.mini .v { font: 500 12px var(--mono); color: var(--muted); white-space: nowrap; }
 
-/* Career diff */
-.diff {
-  font-family: var(--mono); font-size: 13.5px; line-height: 1.75;
-  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
-  overflow-x: auto;
-}
-.diff-head {
-  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12.5px;
-}
+/* Main */
+.main { min-width: 0; padding-block: 56px; display: flex; flex-direction: column; gap: 64px; }
+.thesis { font: 400 1.32rem/1.5 var(--body); margin: 0; max-width: 46ch; text-wrap: pretty; }
+.thesis-wrap { display: flex; flex-direction: column; gap: 28px; }
+section { display: flex; flex-direction: column; gap: 22px; }
+h2 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
+h2 span + span { letter-spacing: .02em; text-transform: none; }
+.about p { margin: 0; max-width: 68ch; }
+.about { gap: 14px; }
+
+/* Diff + review */
+.duo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.diff { font: 13px/1.75 var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow-x: auto; }
+.diff-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .diff-head b { color: var(--ink); font-weight: 500; }
 .stat-add { color: var(--add); } .stat-del { color: var(--del); }
-.diff-body { padding: 6px 0; min-width: 0; }
+.diff-body { padding: 6px 0; }
 .ln { display: grid; grid-template-columns: 2.2em 1.4em 1fr; padding: 0 16px 0 8px; white-space: pre-wrap; }
 .ln .n { color: var(--muted); opacity: .6; text-align: right; padding-right: 10px; user-select: none; }
 .ln .s { user-select: none; }
@@ -121,381 +131,531 @@ h1 {
 .ln.del { background: var(--del-bg); } .ln.del .s, .ln.del .t { color: var(--del); }
 .ln.hunk { background: var(--hunk-bg); color: var(--hunk); }
 .ln.ctx .t { color: var(--muted); }
+.review { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.review-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); font: 12.5px/1.4 var(--mono); color: var(--muted); }
+.avatar { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--hunk-bg); color: var(--hunk); font: 700 10px var(--mono); flex: none; }
+.review-head b { color: var(--ink); font-weight: 500; }
+.verdict { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; color: var(--add); border: 1px solid currentColor; border-radius: 999px; padding: 1px 9px; font-weight: 500; }
+.verdict svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.review-body { padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 10px; }
+.review-sum { font: 12px var(--mono); color: var(--muted); margin: 0; }
+.points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.points li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; font-size: 15px; }
+.points svg { width: 16px; height: 16px; margin-top: 4px; fill: none; stroke: var(--add); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.points b { font-weight: 600; }
+.points span { color: var(--muted); }
 
-/* Sections */
-section { display: flex; flex-direction: column; gap: 22px; }
-h2 {
-  font-family: var(--mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--muted); margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line);
-  display: flex; justify-content: space-between; gap: 12px;
-}
-h2 span:last-child:not(:first-child) { letter-spacing: .02em; text-transform: none; }
-.about p { margin: 0; max-width: 64ch; }
-.about { gap: 14px; }
+/* Git graph */
+.graph { position: relative; display: flex; flex-direction: column; }
+.graph svg.wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.commit { display: grid; grid-template-columns: calc(var(--lane) * 4 + 22px) minmax(0, 1fr); padding-bottom: 30px; }
+.commit:last-child { padding-bottom: 0; }
+.c-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.c-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font: 12px/1.5 var(--mono); color: var(--muted); }
+.hash { color: var(--accent); }
+.branch { border-radius: 4px; padding: 0 7px; border: 1px solid currentColor; }
+.l0 { color: var(--accent); } .l1 { color: var(--add); } .l2 { color: var(--hunk); } .l3 { color: var(--amber); }
+.pill { font: 500 10.5px/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--bg); background: var(--add); border-radius: 999px; padding: 0 8px; }
+.c-title { font: 600 1.15rem/1.35 var(--display); margin: 0; }
+.c-title .org { color: var(--muted); font-weight: 500; }
+.c-text { margin: 0; max-width: 68ch; }
+.merge { font: 12px var(--mono); color: var(--add); margin: 0; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 4px 0 0; list-style: none; }
+.stack li { font: 12px var(--mono); color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; }
 
-/* Timeline */
-.log { display: flex; flex-direction: column; gap: 34px; }
-.org { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 4px 24px; }
-.org-meta { font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-top: 4px; font-variant-numeric: tabular-nums; }
-.org-name { font-family: var(--display); font-weight: 600; font-size: 1.35rem; line-height: 1.25; margin: 0; }
-.org-sub { color: var(--muted); font-size: 14px; margin: 2px 0 0; }
-.roles { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 0; margin-top: 14px; }
-.r { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 4px 24px; position: relative; padding-bottom: 22px; }
-.r:last-child { padding-bottom: 0; }
-.r-date { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
-.r-body { position: relative; padding-left: 22px; border-left: 1px solid var(--line); min-width: 0; }
-.r:last-child .r-body { border-left-color: transparent; }
-.r-body::before {
-  content: ""; position: absolute; left: -5px; top: 9px; width: 9px; height: 9px; border-radius: 50%;
-  background: var(--bg); border: 1.5px solid var(--muted);
-}
-.r.now .r-body::before { background: var(--add); border-color: var(--add); }
-.r h3 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 0; line-height: 1.35; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
-.pill { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--add); border: 1px solid currentColor; border-radius: 999px; padding: 1px 8px; }
-.r p { margin: 6px 0 0; max-width: 62ch; }
-.stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding: 0; list-style: none; }
-.stack li { font-family: var(--mono); font-size: 12px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; }
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.proj h3 { font: 600 1.05rem/1.3 var(--display); margin: 0; }
+.proj h3 a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.proj h3 a:hover { color: var(--accent); }
+.proj h3 svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.proj .tag { font: 500 11px var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.proj p { margin: 0; font-size: 14.5px; color: var(--muted); flex: 1; }
+.proj .stack { margin-top: 2px; }
 
-/* Skills */
-.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 32px; }
-.skill h3 { font-family: var(--display); font-weight: 600; font-size: 1rem; margin: 0 0 6px; }
+/* Skills + certs */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 32px; }
+.skill h3 { font: 600 1rem var(--display); margin: 0 0 6px; }
 .skill p { margin: 0; color: var(--muted); font-size: 15px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.list li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
+.list .v { font: 12px var(--mono); color: var(--muted); white-space: nowrap; }
+.list a { color: inherit; text-decoration-color: var(--line); }
+.list a:hover { color: var(--accent); }
+.list a svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -1px; }
+footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); }
 
-/* Certs + education */
-.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 11px 0; border-bottom: 1px dashed var(--line); align-items: baseline; }
-.list li:last-child { border-bottom: none; }
-.list .k { min-width: 0; }
-.list .v { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
-.two section { gap: 14px; }
+/* Command palette */
+.pal-back { position: fixed; inset: 0; z-index: 50; background: rgba(10, 12, 16, .45); display: flex; justify-content: center; align-items: flex-start; padding: max(12vh, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+.pal { width: min(560px, 100%); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 24px 60px rgba(0,0,0,.25); overflow: hidden; }
+.pal input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); font: 15px var(--body); padding: 14px 16px; outline: none; }
+.pal ul { list-style: none; margin: 0; padding: 6px; max-height: 50vh; overflow-y: auto; }
+.pal li { padding: 9px 12px; border-radius: 6px; cursor: pointer; font-size: 14.5px; display: flex; justify-content: space-between; gap: 10px; }
+.pal li[aria-selected="true"] { background: var(--hunk-bg); color: var(--ink); }
+.pal li .k { font: 11px var(--mono); color: var(--muted); }
+.pal .empty { color: var(--muted); cursor: default; }
 
-footer {
-  font-family: var(--mono); font-size: 12.5px; color: var(--muted);
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
-  padding-top: 18px; border-top: 1px solid var(--line);
+/* Impact: scope bar widens team -> product -> company */
+.scope { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.s-top { display: flex; justify-content: space-between; gap: 8px; font: 12px var(--mono); color: var(--muted); }
+.s-label { font-weight: 500; text-transform: uppercase; letter-spacing: .05em; color: var(--add); }
+.s-bar { display: block; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.s-bar i { display: block; height: 100%; background: var(--add); border-radius: inherit; }
+.step h3 { font: 600 1rem/1.3 var(--display); margin: 2px 0 0; }
+.step p { margin: 0; font-size: 14px; color: var(--muted); }
+.step.is-role { border-color: var(--accent); }
+.step.is-role .s-label { color: var(--accent); }
+.step.is-role .s-bar i { background: var(--accent); }
+/* Production */
+.prod { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pcard { border-left: 3px solid var(--amber); padding: 4px 0 4px 16px; display: flex; flex-direction: column; gap: 4px; }
+.p-num { font: 500 12px var(--mono); color: var(--amber); text-transform: uppercase; letter-spacing: .04em; }
+.pcard h3 { font: 600 1.05rem/1.3 var(--display); margin: 0; }
+.pcard p { margin: 0; color: var(--muted); font-size: 15px; max-width: 52ch; }
+@media (max-width: 1100px) { .scope { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .scope, .prod { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1100px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) {
+  .lang-block { grid-template-columns: minmax(0, 1fr); padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+  .side { position: static; max-height: none; overflow: visible; padding-block: 36px 0; }
+  .main { padding-block: 48px; gap: 52px; }
+  .thesis { font-size: 1.15rem; }
 }
-
 @media (max-width: 640px) {
-  .org, .r { grid-template-columns: minmax(0, 1fr); }
-  .org-meta { order: 2; padding-top: 0; }
-  .r-date { padding-left: 23px; padding-top: 0; order: 2; margin-top: -2px; }
-  .r { display: flex; flex-direction: column; }
-  .r-date { order: 0; border-left: 1px solid var(--line); padding-bottom: 2px; }
-  .r:last-child .r-date { border-left-color: var(--line); }
-  .skills, .two { grid-template-columns: minmax(0, 1fr); }
-  .two { gap: 48px; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .ln { animation: in .5s both; }
-  .ln:nth-child(2) { animation-delay: .08s; } .ln:nth-child(3) { animation-delay: .16s; }
-  .ln:nth-child(4) { animation-delay: .24s; } .ln:nth-child(5) { animation-delay: .32s; }
-  .ln:nth-child(6) { animation-delay: .40s; } .ln:nth-child(7) { animation-delay: .48s; }
-  @keyframes in { from { opacity: .35; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
-}
-
-[hidden] { display: none !important; }
-/* Top bar + language switch */
-.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.langs { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
-.langs button {
-  font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--muted);
-  background: transparent; border: 0; padding: 7px 11px; cursor: pointer;
-}
-.langs button + button { border-left: 1px solid var(--line); }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-.langs button:hover:not([aria-pressed="true"]) { color: var(--ink); }
-.controls { display: inline-flex; gap: 8px; align-items: center; }
-.icon-btn {
-  display: inline-grid; place-items: center; width: 32px; height: 29px; padding: 0;
-  border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--muted); cursor: pointer;
-}
-.icon-btn:hover { color: var(--ink); border-color: var(--accent); }
-.icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-html { scroll-padding-top: 24px; }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-@media (max-width: 640px) {
-  .org .org-meta { order: -1; }
-  .org .org-meta span { display: inline; }
-  .org-meta span + span::before { content: " · "; }
+  :root { --lane: 13px; }
+  .skills, .list { grid-template-columns: minmax(0, 1fr); }
+  .fact { padding: 10px; }
+  .fact b { font-size: 1.15rem; }
+  .fact span { font-size: 10.5px; }
   .diff { font-size: 12px; }
-  .ln { grid-template-columns: 2em 1.2em 1fr; padding-right: 12px; }
+  .palette-btn { display: none; }
 }
-.lang-block { display: flex; flex-direction: column; gap: clamp(48px, 8vw, 72px); }
-.org-text { margin: 8px 0 0; max-width: 62ch; }
-.org-meta span { display: block; }
 .print-only { display: none; }
-.mail { display: inline-flex; gap: 6px; align-items: stretch; min-width: 0; max-width: 100%; }
-.mail-link { min-width: 0; }
-.mail-addr { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mail .icon-btn { height: auto; width: 38px; }
-.copy.done { color: var(--add); border-color: var(--add); }
-.btn.pdf svg { fill: none; stroke: currentColor; stroke-width: 2; }
-
-/* Print / PDF: always light, compact, two A4 pages */
-@page { size: A4; margin: 13mm 15mm 12mm; }
+/* Print / PDF: always light, single column, no diff/review/graph wires so ATS reads clean text */
+@page { size: A4; margin: 12mm 14mm 11mm; }
 @media print {
   :root:not(#_), :root[data-theme]:not(#_) {
     --bg: #FFFFFF; --surface: #FFFFFF; --ink: #14171D; --muted: #555D6C; --line: #D6DAE2;
     --accent: #2C44C2; --add: #1C7448; --add-bg: #E9F5EE; --del: #A8353A; --del-bg: #FBEDED;
-    --hunk: #5A4FB0; --hunk-bg: #F0EEFB; color-scheme: light;
+    --hunk: #5A4FB0; --hunk-bg: #F0EEFB; --amber: #A35D00; color-scheme: light;
   }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
-  body { font-size: 9.4pt; line-height: 1.42; background: #fff; }
-  .wrap { max-width: none; padding: 0 !important; gap: 0; }
-  .lang-block { gap: 13pt; }
-  .controls, .links { display: none !important; }
+  body { font-size: 9.2pt; line-height: 1.4; background: #fff; }
+  .lang-block { display: block; max-width: none; padding: 0 !important; }
+  .side { position: static; max-height: none; overflow: visible; padding: 0; gap: 5pt; }
+  .controls, .contact-wrap, .glance-wrap, .palette-btn, .pal-back, .duo, .about, footer, .graph svg.wires, .c-gutter, .hash, .branch { display: none !important; }
   .print-only { display: block; }
-  .hero { gap: 7pt; }
-  h1 { font-size: 25pt; }
-  .role { font-size: 12pt; margin: -4pt 0 0; }
-  .thesis { font-size: 10.4pt; max-width: none; }
-  .contact { font-family: var(--mono); font-size: 8.6pt; color: var(--muted); margin: 0; }
+  .contact { font: 8.4pt var(--mono); color: var(--muted); margin: 0; }
   .contact a { color: var(--accent); text-decoration: none; }
-  .diff { font-size: 8.4pt; line-height: 1.6; break-inside: avoid; }
-  .diff-head { padding: 5pt 10pt; font-size: 8pt; }
-  section { gap: 9pt; }
-  h2 { font-size: 8pt; padding-bottom: 5pt; }
-  .about { gap: 6pt; }
-  .about p, .r p, .org-text { max-width: none; }
-  .log { gap: 11pt; }
-  .org { grid-template-columns: 96pt minmax(0,1fr); gap: 2pt 16pt; }
-  .org-name { font-size: 12.5pt; }
-  .org-meta, .r-date { font-size: 8pt; }
-  .roles { margin-top: 8pt; }
-  .r { grid-template-columns: 96pt minmax(0,1fr); gap: 2pt 16pt; padding-bottom: 11pt; break-inside: avoid; }
-  .r h3 { font-size: 10.6pt; }
-  .r p { margin-top: 3pt; }
-  .r-body::before { top: 5pt; }
-  .stack { margin-top: 5pt; gap: 4pt; }
-  .stack li { font-size: 7.6pt; padding: 0 5pt; }
-  .skills { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9pt 18pt; }
-  .skill h3 { font-size: 9.8pt; margin-bottom: 2pt; }
-  .skill p { font-size: 9pt; }
-  .two { gap: 22pt; break-inside: avoid; }
-  .list li { padding: 4pt 0; }
-  .list .v { font-size: 8pt; }
-  footer { display: none; }
-  #experience-en, #experience-uk { break-before: auto; }
-  .skills-sec, .two { break-inside: avoid; }
+  h1 { font-size: 22pt; }
+  .role { font-size: 11pt; margin: 0; }
+  .main { padding: 10pt 0 0; gap: 12pt; }
+  .thesis-wrap { gap: 0; }
+  .thesis { font-size: 10.2pt; max-width: none; }
+  section { gap: 7pt; }
+  h2 { font-size: 7.6pt; padding-bottom: 4pt; }
+  .scope { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6pt; }
+  .step { padding: 7pt; gap: 4pt; break-inside: avoid; }
+  .step h3 { font-size: 9.2pt; }
+  .step p { font-size: 8.2pt; line-height: 1.35; }
+  .s-top { font-size: 7.2pt; }
+  .s-bar { height: 4px; }
+  .commit { display: block; padding-bottom: 8pt; break-inside: avoid; }
+  .c-body { gap: 2pt; }
+  .c-meta { font-size: 8pt; }
+  .c-title { font-size: 10.4pt; }
+  .c-text { max-width: none; }
+  .merge { display: none; }
+  .stack { margin-top: 2pt; gap: 3pt; }
+  .stack li { font-size: 7.4pt; padding: 0 5pt; }
+  .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6pt; }
+  .proj { padding: 7pt; gap: 4pt; break-inside: avoid; }
+  .proj h3 { font-size: 9.6pt; }
+  .proj p { font-size: 8.4pt; line-height: 1.35; }
+  .proj h3 svg, .list a svg { display: none; }
+  .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7pt 14pt; }
+  .skill h3 { font-size: 9.2pt; margin-bottom: 1pt; }
+  .skill p { font-size: 8.6pt; }
+  .list li { padding: 3pt 0; }
+  .list a { text-decoration: none; color: inherit; }
+  section, .scope, .projects, .skills { break-inside: avoid; }
+  #experience-en, #experience-uk { break-inside: auto; }
 }
 </style>
 
 </head>
 <body>
-<main class="wrap">
+<main>
 <div class="lang-block" data-lang="en" lang="en">
-  <header class="hero">
+  <aside class="side">
     <div class="topbar">
-      <div class="eyebrow"><span><span class="dot">●</span> AI Engineer @ ISD</span><span>Ukraine</span><span>UTC+2</span></div>
+      <div class="eyebrow"><span class="dot">●</span> AI Engineer @ ISD</div>
       <div class="controls">
-        <div class="langs" role="group" aria-label="Language">
-          <button type="button" data-set-lang="en" aria-pressed="true">EN</button><button type="button" data-set-lang="uk" aria-pressed="false">УКР</button>
-        </div>
+        <div class="langs" role="group" aria-label="Language"><button type="button" data-set-lang="en" aria-pressed="true">EN</button><button type="button" data-set-lang="uk" aria-pressed="false">УКР</button></div>
         <button type="button" class="icon-btn" data-theme-toggle aria-label="Switch light / dark theme" title="Switch light / dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
       </div>
     </div>
     <h1>Hryhorii Manaienkov</h1>
-    <p class="role"><strong>AI Engineer</strong> · LLM solutions for agentic SDLC</p>
-    <p class="thesis">I build LLM-powered solutions for an agentic software development lifecycle: AI agents that work alongside engineers, starting with automated code review. Before that, more than a decade of product engineering, including leading a team&rsquo;s move from desktop to web.</p>
-    <p class="print-only contact"><a href="mailto:manaenkov.gregory@gmail.com">manaenkov.gregory@gmail.com</a> · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
-    <div class="links">
-      <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
-      <a class="btn" href="https://github.com/ManGregory" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg> GitHub</a>
-      <span class="mail"><a class="btn mail-link" href="mailto:manaenkov.gregory@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" stroke-linejoin="round"/></svg> <span class="mail-addr">manaenkov.gregory@gmail.com</span></a><button type="button" class="icon-btn copy" data-copy="manaenkov.gregory@gmail.com" data-done="Copied" aria-label="Copy email" title="Copy email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg></button></span>
-      <a class="btn pdf" href="resume-en.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Download PDF</a>
-      <a class="btn" href="#experience-en">Experience</a>
-      <a class="btn" href="#skills-en">Skills</a>
+    <p class="role"><strong>AI Engineer</strong> · ex-Team Lead · Java/Angular, .NET</p>
+    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
+    <div class="glance-wrap"><h2><span>At a glance</span></h2><dl class="glance"><div class="g-row"><dt>Experience</dt><dd>14 years in production software</dd></div><div class="g-row"><dt>Leadership</dt><dd>Team lead 2020–2026, 8–13 people</dd></div><div class="g-row"><dt>Reach</dt><dd>From my team to the whole company</dd></div><div class="g-row"><dt>Now</dt><dd>Agentic SDLC: AI agents in the development process</dd></div></dl></div>
+    <div class="contact-wrap">
+      <h2><span>Contact</span></h2>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
+        <a class="btn" href="https://github.com/ManGregory" target="_blank" rel="noopener"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg> GitHub</a>
+        <div class="mail"><a class="btn" href="mailto:manaenkov.gregory@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" stroke-linejoin="round"/></svg><span class="mail-addr">manaenkov.gregory@gmail.com</span></a><button type="button" class="icon-btn copy" data-copy="manaenkov.gregory@gmail.com" data-done="Copied" aria-label="Copy email" title="Copy email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg></button></div>
+        <a class="btn" href="resume-en.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Download PDF</a>
+        <button type="button" class="btn palette-btn" data-open-palette><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></svg> Commands <span class="kbd">Ctrl K</span></button>
+      </div>
     </div>
-  </header>
+  </aside>
 
-  <div class="diff" role="img" aria-label="Career summary written as a code diff, from desktop .NET developer to team lead of a web platform to AI engineer">
-    <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span><span><span class="stat-add">+4</span> <span class="stat-del">−1</span></span></div>
-    <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, laboratory information systems @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Clinical data has to be correct.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Desktop-only: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Web: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Team lead since 2020: led the desktop → web shift</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Taught C# at Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM solutions for agentic SDLC</span></div></div>
-  </div>
+  <div class="main">
+    <div class="thesis-wrap">
+      <p class="thesis">I design and roll out an agentic SDLC: AI agents that take part in how a company builds software, from requirements to merge. I got here by bringing AI into my own team first, then into the whole company. Underneath: 14 years of production engineering, six of them as a team lead.</p>
+      <div class="duo">
+        <div class="diff" role="img" aria-label="Career summary written as a code diff, from desktop .NET developer to team lead of a web platform to AI engineer">
+          <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span></div>
+          <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, laboratory information systems @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Clinical data has to be correct.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Desktop-only: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Web: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Team lead since 2020: led the desktop → web shift</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Taught C# at Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM solutions for agentic SDLC</span></div></div>
+        </div>
+        <div class="review">
+          <div class="review-head"><span class="avatar">CR</span><span><b>claude-reviewer</b> reviewed <b>career.md</b></span><span class="verdict"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Approved</span></div>
+          <div class="review-body"><p class="review-sum">3 strengths · 0 blocking issues</p><ul class="points"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Ships across stacks.</b> <span>Delphi → C#/.NET → Java/Angular → LLM tooling, without starting over each time.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Leads people through change.</b> <span>Took a whole team from desktop to web and coached it through the new stack.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Changes how the company ships.</b> <span>Designs and rolls out an agentic SDLC, already in production on several repositories.</span></div></li></ul></div>
+        </div>
+      </div>
+    </div>
 
-  <section class="about">
-    <h2><span>About</span><span>since 2012</span></h2>
-    <p>I started in 2012 at PJSC KZRK, automating internal business processes in a Delphi ERP. In 2015 I joined ISD to work on a laboratory information system for genetic and clinical labs. I began on the C#/.NET genetics module, became its team lead in 2020, and in 2022 led the whole team&rsquo;s transformation from desktop development to a web-oriented Java and Angular project.</p><p>In 2026 I moved to ISD&rsquo;s AI team, where I build LLM-powered solutions for an agentic SDLC. I lead the code-review automation workstream: an AI reviewer built on Claude Code that runs in our GitHub pipeline.</p>
-  </section>
+    <section id="impact-en">
+      <h2><span>Impact</span><span>how my reach grew</span></h2>
+      <ol class="scope"><li class="step"><div class="s-top"><span class="s-label">Engineer</span><span>2015–2020</span></div><span class="s-bar"><i style="width:22%"></i></span><h3>Senior engineer on the hard parts</h3><p>Grew to senior level on the LIS genetics module and took on its most complex parts: genetic test workflows, results processing and clinical data correctness.</p></li><li class="step"><div class="s-top"><span class="s-label">Team</span><span>2020–2023</span></div><span class="s-bar"><i style="width:46%"></i></span><h3>Team lead on call and at go-lives</h3><p>Became team lead in 2020, with 8–13 people reporting to me over the years. Led my area on emergency support and on go-live shifts for client launches. In 2022–2023 took the whole team from C#/.NET desktop to a Java and Angular web stack.</p></li><li class="step"><div class="s-top"><span class="s-label">Product</span><span>2023–2025</span></div><span class="s-bar"><i style="width:72%"></i></span><h3>Our part of the product goes live</h3><p>Grew my team and its part of the product, one team within the Results area, and took it live with the first client. Solved performance problems, many of them in Oracle: execution plans, query optimization. Other LIS teams reused my Grafana dashboards.</p></li><li class="step is-role"><div class="s-top"><span class="s-label">Company</span><span>2025–2026</span></div><span class="s-bar"><i style="width:100%"></i></span><h3>AI across the company</h3><p>Rolled out GitHub Copilot in my team with the product&rsquo;s first custom instructions, then ran a company-wide AI webinar for 300+ people in English. Now rolling out an agentic SDLC whose code review stage cut escaped defects by 40–50%.</p></li></ol>
+    </section>
 
-  <section id="experience-en">
-    <h2><span>Experience</span><span>newest first</span></h2>
-    <div class="log"><article class="org">
-        <div class="org-meta"><span>2015 – now</span><span>11 yrs 1 mo</span></div>
-        <div><h3 class="org-name">ISD</h3><p class="org-sub">Full-time</p></div>
-        <div class="roles"><div class="r now">
-            <div class="r-date">Jun 2026 – now</div>
-            <div class="r-body"><h3>AI Engineer <span class="pill">Current</span></h3><p>Building LLM-powered solutions for an agentic SDLC on ISD&rsquo;s AI team: AI agents that take part in the development process alongside engineers. I lead the code-review automation workstream, an AI reviewer built on Claude Code.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul></div>
-          </div><div class="r">
-            <div class="r-date">May 2022 – Jun 2026</div>
-            <div class="r-body"><h3>Team Lead / Full Stack Developer</h3><p>Led the transformation of my team from desktop to web: the whole team moved from the C#/.NET genetics module to the Results area of LIS (Laboratory Information System), a full-stack Java and Angular product for managing and reporting lab results. Owned technical direction, code review and delivery; mentored the team through the new stack and coordinated with product and adjacent areas. In 2025–2026 ran internal trainings and knowledge-sharing sessions on using AI in day-to-day development.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul></div>
-          </div><div class="r">
-            <div class="r-date">Oct 2015 – May 2022</div>
-            <div class="r-body"><h3>.NET Developer → Team Lead</h3><p>Built and maintained the genetics module of the LIS product: a desktop application for genetic test workflows, results processing and reporting. Worked across the C#/.NET stack with a focus on reliability and clinical data correctness. Became the team&rsquo;s lead in 2020.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul></div>
-          </div></div>
-      </article><article class="org">
-        <div class="org-meta"><span>Feb – Sep 2020</span><span>8 mo</span></div>
-        <div><h3 class="org-name">Hillel IT School</h3><p class="org-sub">Course Instructor · Part-time</p>
-          <p class="org-text">Taught C# / .NET programming courses, taking students from fundamentals to their first hands-on projects.</p></div>
-      </article><article class="org">
-        <div class="org-meta"><span>Jun 2012 – Oct 2015</span><span>3 yrs 5 mo</span></div>
-        <div><h3 class="org-name">PJSC KZRK</h3><p class="org-sub">Software Engineer</p>
-          <p class="org-text">Developed and maintained the company&rsquo;s in-house ERP in Delphi, automating internal business processes: budgeting, tenders, procurement and related workflows.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul></div>
+    <section class="about">
+      <h2><span>About</span><span>since 2012</span></h2>
+      <p>I started in 2012 at PJSC KZRK, automating internal business processes in a Delphi ERP. In 2015 I joined ISD to work on a laboratory information system for genetic and clinical labs. I began on the C#/.NET genetics module, became its team lead in 2020, and in 2022 led the whole team&rsquo;s transformation from desktop development to a web-oriented Java and Angular project.</p><p>In June 2026 I moved to ISD&rsquo;s AI team, where I design and roll out an agentic SDLC: AI agents that take part in every stage of development, from requirements to merge. Its first stage in production is AI code review that looks at every pull request from several angles.</p>
+    </section>
+
+    <section id="experience-en">
+      <h2><span>Experience</span><span>git log --graph</span></h2>
+      <div class="graph"><svg class="wires" aria-hidden="true"></svg><article class="commit" data-id="ai" data-lane="0" data-parent="teamlead" data-head="1">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">a7c41e2</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>Jun 2026 – now</span><span class="pill">Current</span></div>
+          <h3 class="c-title">AI Engineer <span class="org">· ISD</span></h3>
+          <p class="c-text">Designing and rolling out an agentic SDLC across ISD: AI agents that take part in the development process alongside engineers. First stage in production: AI code review that checks each pull request for code quality and for fit to requirements, now used on several repositories with 40–50% fewer escaped defects.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul>
+        </div>
+      </article><article class="commit" data-id="teamlead" data-lane="1" data-parent="genetics">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">5d0b93f</span><span class="branch l1">isd/lis-results-web</span><span>May 2022 – Jun 2026</span></div>
+          <h3 class="c-title">Team Lead / Full Stack Developer <span class="org">· ISD</span></h3>
+          <p class="merge">↳ merge: whole team moved desktop → web</p><p class="c-text">Led the transformation of my team from desktop to web: the whole team moved from the C#/.NET genetics module to the Results area of LIS (Laboratory Information System), a full-stack Java and Angular product for managing and reporting lab results. Led a team of 8–13 people. Owned technical direction, code review and delivery; in 2023–2025 did a lot of performance work, much of it in Oracle (execution plans, query optimization); mentored the team through the new stack and coordinated with product and adjacent areas. From 2025 drove AI adoption: rolled out GitHub Copilot with the product&rsquo;s first custom instructions and ran trainings and knowledge-sharing sessions.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul>
+        </div>
+      </article><article class="commit" data-id="hillel" data-lane="3" data-parent="genetics" data-merge="genetics">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">e21f7aa</span><span class="branch l3">side/teaching</span><span>Feb – Sep 2020</span></div>
+          <h3 class="c-title">Course Instructor <span class="org">· Hillel IT School</span></h3>
+          <p class="c-text">Taught C# / .NET programming courses, taking students from fundamentals to their first hands-on projects.</p>
+        </div>
+      </article><article class="commit" data-id="genetics" data-lane="2" data-parent="kzrk">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">3b9c0d4</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>Oct 2015 – May 2022</span></div>
+          <h3 class="c-title">.NET Developer → Team Lead <span class="org">· ISD</span></h3>
+          <p class="c-text">Built and maintained the genetics module of the LIS product: a desktop application for genetic test workflows, results processing and reporting. Worked across the C#/.NET stack with a focus on reliability and clinical data correctness. Became the team&rsquo;s lead in 2020.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul>
+        </div>
+      </article><article class="commit" data-id="kzrk" data-lane="3">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">9f12e6b</span><span class="branch l3">kzrk/erp-delphi</span><span>Jun 2012 – Oct 2015</span></div>
+          <h3 class="c-title">Software Engineer <span class="org">· PJSC KZRK</span></h3>
+          <p class="c-text">Developed and maintained the company&rsquo;s in-house ERP in Delphi, automating internal business processes: budgeting, tenders, procurement and related workflows.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul>
+        </div>
       </article></div>
-  </section>
+    </section>
 
-  <section id="skills-en" class="skills-sec">
-    <h2><span>Skills</span><span>by area</span></h2>
-    <div class="skills"><div class="skill"><h3>AI developer tooling</h3><p>Agentic SDLC, Claude &amp; Anthropic API, Claude Code, MCP servers, LLM-based code review, GitHub Actions automation</p></div><div class="skill"><h3>Backend</h3><p>Java, Spring Boot, C#, .NET, REST services, enterprise transaction patterns</p></div><div class="skill"><h3>Frontend &amp; desktop</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Data</h3><p>Oracle (incl. performance tuning), SQL, T-SQL</p></div><div class="skill"><h3>Infrastructure</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Leadership</h3><p>Team lead since 2020, desktop-to-web transformation, internal AI trainings and knowledge sharing, technical direction, code review, mentoring, teaching</p></div></div>
-  </section>
+    <section id="projects-en">
+      <h2><span>Projects</span><span>things I built</span></h2>
+      <div class="projects"><article class="proj"><span class="tag">ISD · internal</span><h3>Agentic SDLC</h3><p>AI agents built into the development process, from spec to merge. Spec-driven development with GitHub Spec Kit, Claude Code agents running in GitHub Actions, and a custom AI review process as the quality gate.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · internal</span><h3>AI code review</h3><p>The review stage of the agentic SDLC. Every pull request is checked from several angles: code quality (best practices, efficiency) and fit to functional requirements and documentation pulled from external issue trackers. Runs on two large repositories on different stacks (Java/Angular and Python) and several smaller ones, including its own. Escaped defects down 40–50%.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">open source</span><h3><a href="https://github.com/ManGregory/claude-mentor" target="_blank" rel="noopener">claude-mentor <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></h3><p>A custom Claude command for learning any topic that keeps your progress between sessions.</p><ul class="stack"><li>Claude Code</li><li>Prompting</li></ul></article></div>
+    </section>
 
-  <div class="two">
-    <section><h2><span>Certifications</span></h2><ul class="list"><li><span class="k">Prometheus and Grafana · robot_dreams</span><span class="v">Oct 2025</span></li><li><span class="k">Programming with C# · edX</span><span class="v">Honor Code</span></li><li><span class="k">Querying with Transact-SQL · edX</span><span class="v">Honor Code</span></li><li><span class="k">Intro to Computer Science and Programming · edX</span><span class="v">Honor Code</span></li><li><span class="k">Introduction to Linux · edX</span><span class="v">Honor Code</span></li></ul></section>
-    <section><h2><span>Education &amp; languages</span></h2><ul class="list"><li><span class="k">Kryvyi Rih Technical University</span><span class="v">University</span></li><li><span class="k">Ukrainian</span><span class="v">Native</span></li><li><span class="k">English</span><span class="v">B2 · Upper-Intermediate</span></li></ul></section>
+    <section id="skills-en">
+      <h2><span>Skills</span><span>by area</span></h2>
+      <div class="skills"><div class="skill"><h3>AI developer tooling</h3><p>Agentic SDLC design and rollout, multi-agent systems, Claude &amp; Anthropic API, Claude Code, MCP servers, AI code review, GitHub Actions</p></div><div class="skill"><h3>Backend</h3><p>Java, Spring Boot, C#, .NET, REST services, enterprise transaction patterns</p></div><div class="skill"><h3>Frontend &amp; desktop</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Data &amp; performance</h3><p>Oracle performance tuning (execution plans, query optimization), SQL, T-SQL</p></div><div class="skill"><h3>Infrastructure</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Leadership</h3><p>Team lead since 2020, desktop-to-web transformation, company-wide AI webinar (300+ people), Copilot adoption, technical direction, code review, mentoring, teaching</p></div></div>
+    </section>
+
+    <section>
+      <h2><span>Certifications</span></h2>
+      <ul class="list"><li><span><a href="https://lms.robotdreams.cc/certificate/cad2279ae1d188dd075e99d1a5432ccc" target="_blank" rel="noopener">Prometheus and Grafana · robot_dreams <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></span><span class="v">Oct 2025</span></li><li><span><a href="https://www.udemy.com/certificate/UC-154956ac-95b0-42d3-a560-d9fe3d67143d/" target="_blank" rel="noopener">Oracle SQL Performance Tuning Masterclass · Udemy <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></span><span class="v">Nov 2023</span></li></ul>
+    </section>
+
+    <section>
+      <h2><span>Languages & education</span></h2>
+      <ul class="list"><li><span>Kryvyi Rih Technical University</span><span class="v">University</span></li><li><span>Ukrainian</span><span class="v">Native</span></li><li><span>English</span><span class="v">C1 · Advanced</span></li></ul>
+    </section>
+
+    <footer><span>© 2026 Hryhorii Manaienkov</span><span>hman.pro</span></footer>
   </div>
-
-  <footer>
-    <span>© 2026 Hryhorii Manaienkov · manaenkov.gregory@gmail.com</span>
-    <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a>
-  </footer>
 </div>
 <div class="lang-block" data-lang="uk" lang="uk" hidden>
-  <header class="hero">
+  <aside class="side">
     <div class="topbar">
-      <div class="eyebrow"><span><span class="dot">●</span> AI Engineer @ ISD</span><span>Україна</span><span>UTC+2</span></div>
+      <div class="eyebrow"><span class="dot">●</span> AI Engineer @ ISD</div>
       <div class="controls">
-        <div class="langs" role="group" aria-label="Language">
-          <button type="button" data-set-lang="en" aria-pressed="false">EN</button><button type="button" data-set-lang="uk" aria-pressed="true">УКР</button>
-        </div>
+        <div class="langs" role="group" aria-label="Language"><button type="button" data-set-lang="en" aria-pressed="false">EN</button><button type="button" data-set-lang="uk" aria-pressed="true">УКР</button></div>
         <button type="button" class="icon-btn" data-theme-toggle aria-label="Перемкнути світлу / темну тему" title="Перемкнути світлу / темну тему"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
       </div>
     </div>
     <h1>Григорій Манаєнков</h1>
-    <p class="role"><strong>AI Engineer</strong> · LLM-рішення для agentic SDLC</p>
-    <p class="thesis">Створюю LLM-рішення для агентного життєвого циклу розробки (agentic SDLC): AI-агентів, які працюють поруч з інженерами, починаючи з автоматизованого code review. До цього понад десять років продуктової розробки, зокрема перехід команди з десктопу на веб під моїм керівництвом.</p>
-    <p class="print-only contact"><a href="mailto:manaenkov.gregory@gmail.com">manaenkov.gregory@gmail.com</a> · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
-    <div class="links">
-      <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
-      <a class="btn" href="https://github.com/ManGregory" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg> GitHub</a>
-      <span class="mail"><a class="btn mail-link" href="mailto:manaenkov.gregory@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" stroke-linejoin="round"/></svg> <span class="mail-addr">manaenkov.gregory@gmail.com</span></a><button type="button" class="icon-btn copy" data-copy="manaenkov.gregory@gmail.com" data-done="Скопійовано" aria-label="Скопіювати email" title="Скопіювати email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg></button></span>
-      <a class="btn pdf" href="resume-uk.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Завантажити PDF</a>
-      <a class="btn" href="#experience-uk">Досвід</a>
-      <a class="btn" href="#skills-uk">Навички</a>
+    <p class="role"><strong>AI Engineer</strong> · ex-тімлід · Java/Angular, .NET</p>
+    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
+    <div class="glance-wrap"><h2><span>Коротко</span></h2><dl class="glance"><div class="g-row"><dt>Досвід</dt><dd>14 років у продакшн-розробці</dd></div><div class="g-row"><dt>Лідерство</dt><dd>Тімлід 2020–2026, 8–13 людей</dd></div><div class="g-row"><dt>Масштаб</dt><dd>Від своєї команди до всієї компанії</dd></div><div class="g-row"><dt>Зараз</dt><dd>Agentic SDLC: AI-агенти в процесі розробки</dd></div></dl></div>
+    <div class="contact-wrap">
+      <h2><span>Контакти</span></h2>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg> LinkedIn</a>
+        <a class="btn" href="https://github.com/ManGregory" target="_blank" rel="noopener"><svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg> GitHub</a>
+        <div class="mail"><a class="btn" href="mailto:manaenkov.gregory@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" stroke-linejoin="round"/></svg><span class="mail-addr">manaenkov.gregory@gmail.com</span></a><button type="button" class="icon-btn copy" data-copy="manaenkov.gregory@gmail.com" data-done="Скопійовано" aria-label="Скопіювати email" title="Скопіювати email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg></button></div>
+        <a class="btn" href="resume-uk.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Завантажити PDF</a>
+        <button type="button" class="btn palette-btn" data-open-palette><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></svg> Команди <span class="kbd">Ctrl K</span></button>
+      </div>
     </div>
-  </header>
+  </aside>
 
-  <div class="diff" role="img" aria-label="Кар'єра у вигляді диффу коду: від .NET-розробника десктопу до тімліда веб-платформи і AI-інженера">
-    <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span><span><span class="stat-add">+4</span> <span class="stat-del">−1</span></span></div>
-    <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, лабораторні інформаційні системи @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Клінічні дані мають бути правильними.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Лише десктоп: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Веб: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Тімлід з 2020: перевів команду з десктопу на веб</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Викладав C# у Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM-рішення для agentic SDLC</span></div></div>
-  </div>
+  <div class="main">
+    <div class="thesis-wrap">
+      <p class="thesis">Проєктую та впроваджую agentic SDLC: AI-агентів, які беруть участь у тому, як компанія створює софт, від вимог до merge. Прийшов до цього, запроваджуючи AI спершу у своїй команді, а потім у всій компанії. За цим стоять 14 років продакшн-розробки, з них шість тімлідом.</p>
+      <div class="duo">
+        <div class="diff" role="img" aria-label="Кар'єра у вигляді диффу коду: від .NET-розробника десктопу до тімліда веб-платформи і AI-інженера">
+          <div class="diff-head"><span><b>career.md</b> · 2012 → 2026</span></div>
+          <div class="diff-body"><div class="ln hunk"><span class="n"></span><span class="s"></span><span class="t">@@ ISD, лабораторні інформаційні системи @@</span></div><div class="ln ctx"><span class="n">1</span><span class="s"> </span><span class="t">Клінічні дані мають бути правильними.</span></div><div class="ln del"><span class="n">2</span><span class="s">−</span><span class="t">Лише десктоп: C# / .NET / WinForms</span></div><div class="ln add"><span class="n">2</span><span class="s">+</span><span class="t">Веб: Java · Spring Boot · Angular · Oracle</span></div><div class="ln add"><span class="n">3</span><span class="s">+</span><span class="t">Тімлід з 2020: перевів команду з десктопу на веб</span></div><div class="ln add"><span class="n">4</span><span class="s">+</span><span class="t">Викладав C# у Hillel IT School</span></div><div class="ln add"><span class="n">5</span><span class="s">+</span><span class="t">AI engineer: LLM-рішення для agentic SDLC</span></div></div>
+        </div>
+        <div class="review">
+          <div class="review-head"><span class="avatar">CR</span><span><b>claude-reviewer</b> переглянув <b>career.md</b></span><span class="verdict"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Approved</span></div>
+          <div class="review-body"><p class="review-sum">3 сильні сторони · 0 блокерів</p><ul class="points"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Працює в різних стеках.</b> <span>Delphi → C#/.NET → Java/Angular → LLM-інструменти, щоразу без старту з нуля.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Веде людей через зміни.</b> <span>Перевів усю команду з десктопу на веб і допоміг їй освоїти новий стек.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><div><b>Змінює те, як компанія випускає софт.</b> <span>Проєктує та впроваджує agentic SDLC, що вже працює в продакшені на кількох репозиторіях.</span></div></li></ul></div>
+        </div>
+      </div>
+    </div>
 
-  <section class="about">
-    <h2><span>Про мене</span><span>з 2012</span></h2>
-    <p>Почав у 2012 році в ПАТ «КЗРК», автоматизуючи внутрішні бізнес-процеси в ERP на Delphi. У 2015 прийшов в ISD працювати над лабораторною інформаційною системою для генетичних і клінічних лабораторій. Починав з модуля генетики на C#/.NET, у 2020 став тімлідом команди, а в 2022 очолив перехід усієї команди з десктопної розробки на веб-проєкт на Java та Angular.</p><p>У 2026 перейшов в AI-команду ISD, де створюю LLM-рішення для agentic SDLC. Керую напрямом автоматизації code review: це AI-рев&rsquo;юер на базі Claude Code, що працює в нашому GitHub-пайплайні.</p>
-  </section>
+    <section id="impact-uk">
+      <h2><span>Вплив</span><span>як зростав масштаб</span></h2>
+      <ol class="scope"><li class="step"><div class="s-top"><span class="s-label">Інженер</span><span>2015–2020</span></div><span class="s-bar"><i style="width:22%"></i></span><h3>Senior-розробник на найскладнішому</h3><p>Виріс до senior-рівня на модулі генетики LIS і брав на себе найскладніше: процеси генетичних досліджень, обробку результатів, коректність клінічних даних.</p></li><li class="step"><div class="s-top"><span class="s-label">Команда</span><span>2020–2023</span></div><span class="s-bar"><i style="width:46%"></i></span><h3>Тімлід на чергуваннях і go-live</h3><p>Став тімлідом у 2020; у різні роки в мене в підпорядкуванні було 8–13 людей. Вів свій напрям на emergency support і на змінах go-live під час запусків клієнтів. У 2022–2023 перевів усю команду з десктопу на C#/.NET на веб-стек Java та Angular.</p></li><li class="step"><div class="s-top"><span class="s-label">Продукт</span><span>2023–2025</span></div><span class="s-bar"><i style="width:72%"></i></span><h3>Наша частина продукту в продакшні</h3><p>Розвивав свою команду та її частину продукту (одна з команд напряму Results) і вивів її в продакшн до першого клієнта. Розбирався з продуктивністю, багато в Oracle: execution plans, оптимізація запитів. Мої дашборди Grafana перевикористали інші команди LIS.</p></li><li class="step is-role"><div class="s-top"><span class="s-label">Компанія</span><span>2025–2026</span></div><span class="s-bar"><i style="width:100%"></i></span><h3>AI для всієї компанії</h3><p>Впровадив GitHub Copilot у команді з першими кастомними інструкціями для продукту, потім провів AI-вебінар для всієї компанії на 300+ людей англійською. Тепер впроваджую agentic SDLC, етап code review якого зменшив escaped defects на 40–50%.</p></li></ol>
+    </section>
 
-  <section id="experience-uk">
-    <h2><span>Досвід</span><span>від новішого</span></h2>
-    <div class="log"><article class="org">
-        <div class="org-meta"><span>2015 – досі</span><span>11 р. 1 міс.</span></div>
-        <div><h3 class="org-name">ISD</h3><p class="org-sub">Повна зайнятість</p></div>
-        <div class="roles"><div class="r now">
-            <div class="r-date">черв. 2026 – досі</div>
-            <div class="r-body"><h3>AI Engineer <span class="pill">Зараз</span></h3><p>Створюю LLM-рішення для agentic SDLC в AI-команді ISD: AI-агентів, які беруть участь у процесі розробки поруч з інженерами. Керую напрямом автоматизації code review, де розробляємо AI-рев&rsquo;юера на базі Claude Code.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul></div>
-          </div><div class="r">
-            <div class="r-date">трав. 2022 – черв. 2026</div>
-            <div class="r-body"><h3>Team Lead / Full Stack Developer</h3><p>Очолив перехід своєї команди з десктопу на веб: уся команда перейшла з модуля генетики на C#/.NET у напрям Results системи LIS (Laboratory Information System), full-stack продукт на Java та Angular для керування результатами лабораторних досліджень і звітності. Відповідав за технічний напрям, code review і поставку; менторив команду під час переходу на новий стек і координувався з продуктом та суміжними напрямами. У 2025–2026 проводив внутрішні тренінги та knowledge-sharing сесії з використання AI у щоденній розробці.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul></div>
-          </div><div class="r">
-            <div class="r-date">жовт. 2015 – трав. 2022</div>
-            <div class="r-body"><h3>.NET Developer → Team Lead</h3><p>Розробляв і підтримував модуль генетики продукту LIS: десктопний застосунок для процесів генетичних досліджень, обробки результатів і звітності. Працював зі стеком C#/.NET з фокусом на надійність і коректність клінічних даних. З 2020 року тімлід команди.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul></div>
-          </div></div>
-      </article><article class="org">
-        <div class="org-meta"><span>лют. – вер. 2020</span><span>8 міс.</span></div>
-        <div><h3 class="org-name">Hillel IT School</h3><p class="org-sub">Викладач курсу · Часткова зайнятість</p>
-          <p class="org-text">Викладав курси програмування на C# / .NET: від основ до перших практичних проєктів студентів.</p></div>
-      </article><article class="org">
-        <div class="org-meta"><span>черв. 2012 – жовт. 2015</span><span>3 р. 5 міс.</span></div>
-        <div><h3 class="org-name">ПАТ «КЗРК»</h3><p class="org-sub">Software Engineer</p>
-          <p class="org-text">Розробляв і підтримував внутрішню ERP-систему компанії на Delphi, автоматизуючи бізнес-процеси: бюджетування, тендери, закупівлі та суміжні процеси.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul></div>
+    <section class="about">
+      <h2><span>Про мене</span><span>з 2012</span></h2>
+      <p>Почав у 2012 році в ПАТ «КЗРК», автоматизуючи внутрішні бізнес-процеси в ERP на Delphi. У 2015 прийшов в ISD працювати над лабораторною інформаційною системою для генетичних і клінічних лабораторій. Починав з модуля генетики на C#/.NET, у 2020 став тімлідом команди, а в 2022 очолив перехід усієї команди з десктопної розробки на веб-проєкт на Java та Angular.</p><p>У червні 2026 перейшов в AI-команду ISD, де проєктую та впроваджую agentic SDLC: AI-агентів, які беруть участь у кожному етапі розробки, від вимог до merge. Перший етап у продакшені — AI code review, що аналізує кожен pull request з кількох кутів.</p>
+    </section>
+
+    <section id="experience-uk">
+      <h2><span>Досвід</span><span>git log --graph</span></h2>
+      <div class="graph"><svg class="wires" aria-hidden="true"></svg><article class="commit" data-id="ai" data-lane="0" data-parent="teamlead" data-head="1">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">a7c41e2</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>черв. 2026 – досі</span><span class="pill">Зараз</span></div>
+          <h3 class="c-title">AI Engineer <span class="org">· ISD</span></h3>
+          <p class="c-text">Проєктую та впроваджую agentic SDLC в ISD: AI-агентів, які беруть участь у процесі розробки поруч з інженерами. Перший етап у продакшені — AI code review, що перевіряє кожен pull request на якість коду та відповідність вимогам; працює на кількох репозиторіях, escaped defects менше на 40–50%.</p><ul class="stack"><li>Claude / Anthropic API</li><li>Claude Code</li><li>MCP</li><li>GitHub Actions</li></ul>
+        </div>
+      </article><article class="commit" data-id="teamlead" data-lane="1" data-parent="genetics">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">5d0b93f</span><span class="branch l1">isd/lis-results-web</span><span>трав. 2022 – черв. 2026</span></div>
+          <h3 class="c-title">Team Lead / Full Stack Developer <span class="org">· ISD</span></h3>
+          <p class="merge">↳ merge: уся команда перейшла з десктопу на веб</p><p class="c-text">Очолив перехід своєї команди з десктопу на веб: уся команда перейшла з модуля генетики на C#/.NET у напрям Results системи LIS (Laboratory Information System), full-stack продукт на Java та Angular для керування результатами лабораторних досліджень і звітності. Керував командою з 8–13 людей. Відповідав за технічний напрям, code review і поставку; у 2023–2025 багато займався продуктивністю, зокрема в Oracle (execution plans, оптимізація запитів); менторив команду під час переходу на новий стек і координувався з продуктом та суміжними напрямами. З 2025 року запроваджував AI у розробці: впровадив GitHub Copilot з першими кастомними інструкціями для продукту, проводив тренінги та knowledge-sharing сесії.</p><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li></ul>
+        </div>
+      </article><article class="commit" data-id="hillel" data-lane="3" data-parent="genetics" data-merge="genetics">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">e21f7aa</span><span class="branch l3">side/teaching</span><span>лют. – вер. 2020</span></div>
+          <h3 class="c-title">Викладач курсу <span class="org">· Hillel IT School</span></h3>
+          <p class="c-text">Викладав курси програмування на C# / .NET: від основ до перших практичних проєктів студентів.</p>
+        </div>
+      </article><article class="commit" data-id="genetics" data-lane="2" data-parent="kzrk">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">3b9c0d4</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>жовт. 2015 – трав. 2022</span></div>
+          <h3 class="c-title">.NET Developer → Team Lead <span class="org">· ISD</span></h3>
+          <p class="c-text">Розробляв і підтримував модуль генетики продукту LIS: десктопний застосунок для процесів генетичних досліджень, обробки результатів і звітності. Працював зі стеком C#/.NET з фокусом на надійність і коректність клінічних даних. З 2020 року тімлід команди.</p><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul>
+        </div>
+      </article><article class="commit" data-id="kzrk" data-lane="3">
+        <div class="c-gutter" aria-hidden="true"></div>
+        <div class="c-body">
+          <div class="c-meta"><span class="hash">9f12e6b</span><span class="branch l3">kzrk/erp-delphi</span><span>черв. 2012 – жовт. 2015</span></div>
+          <h3 class="c-title">Software Engineer <span class="org">· ПАТ «КЗРК»</span></h3>
+          <p class="c-text">Розробляв і підтримував внутрішню ERP-систему компанії на Delphi, автоматизуючи бізнес-процеси: бюджетування, тендери, закупівлі та суміжні процеси.</p><ul class="stack"><li>Delphi</li><li>ERP</li><li>SQL</li></ul>
+        </div>
       </article></div>
-  </section>
+    </section>
 
-  <section id="skills-uk" class="skills-sec">
-    <h2><span>Навички</span><span>за напрямами</span></h2>
-    <div class="skills"><div class="skill"><h3>AI-інструменти для розробки</h3><p>Agentic SDLC, Claude та Anthropic API, Claude Code, MCP-сервери, code review на базі LLM, автоматизація GitHub Actions</p></div><div class="skill"><h3>Бекенд</h3><p>Java, Spring Boot, C#, .NET, REST-сервіси, корпоративні патерни роботи з транзакціями</p></div><div class="skill"><h3>Фронтенд і десктоп</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Дані</h3><p>Oracle (зокрема оптимізація продуктивності), SQL, T-SQL</p></div><div class="skill"><h3>Інфраструктура</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Лідерство</h3><p>Тімлід з 2020, перехід команди з десктопу на веб, внутрішні AI-тренінги та knowledge sharing, технічний напрям, code review, менторство, викладання</p></div></div>
-  </section>
+    <section id="projects-uk">
+      <h2><span>Проєкти</span><span>що я зробив</span></h2>
+      <div class="projects"><article class="proj"><span class="tag">ISD · внутрішній</span><h3>Agentic SDLC</h3><p>AI-агенти, вбудовані в процес розробки, від специфікації до merge. Spec-driven development на GitHub Spec Kit, агенти Claude Code у GitHub Actions і власний процес AI-рев&rsquo;ю як контроль якості.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · внутрішній</span><h3>AI code review</h3><p>Етап рев&rsquo;ю в agentic SDLC. Кожен pull request перевіряється з кількох кутів: якість коду (best practices, ефективність) і відповідність функціональним вимогам та документації із зовнішніх баг-трекерів. Працює на двох великих репозиторіях з різними стеками (Java/Angular і Python) та кількох менших, зокрема на власному. Escaped defects менше на 40–50%.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">open source</span><h3><a href="https://github.com/ManGregory/claude-mentor" target="_blank" rel="noopener">claude-mentor <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></h3><p>Кастомна команда Claude для вивчення будь-якої теми, що зберігає прогрес між сесіями.</p><ul class="stack"><li>Claude Code</li><li>Prompting</li></ul></article></div>
+    </section>
 
-  <div class="two">
-    <section><h2><span>Сертифікати</span></h2><ul class="list"><li><span class="k">Prometheus and Grafana · robot_dreams</span><span class="v">жовт. 2025</span></li><li><span class="k">Programming with C# · edX</span><span class="v">Honor Code</span></li><li><span class="k">Querying with Transact-SQL · edX</span><span class="v">Honor Code</span></li><li><span class="k">Intro to Computer Science and Programming · edX</span><span class="v">Honor Code</span></li><li><span class="k">Introduction to Linux · edX</span><span class="v">Honor Code</span></li></ul></section>
-    <section><h2><span>Освіта та мови</span></h2><ul class="list"><li><span class="k">Криворізький технічний університет</span><span class="v">Університет</span></li><li><span class="k">Українська</span><span class="v">Рідна</span></li><li><span class="k">Англійська</span><span class="v">B2 · Upper-Intermediate</span></li></ul></section>
+    <section id="skills-uk">
+      <h2><span>Навички</span><span>за напрямами</span></h2>
+      <div class="skills"><div class="skill"><h3>AI-інструменти для розробки</h3><p>Проєктування та впровадження agentic SDLC, мультиагентні системи, Claude та Anthropic API, Claude Code, MCP-сервери, AI code review, GitHub Actions</p></div><div class="skill"><h3>Бекенд</h3><p>Java, Spring Boot, C#, .NET, REST-сервіси, корпоративні патерни роботи з транзакціями</p></div><div class="skill"><h3>Фронтенд і десктоп</h3><p>Angular, TypeScript, WinForms, Delphi</p></div><div class="skill"><h3>Дані та продуктивність</h3><p>Оптимізація продуктивності Oracle (execution plans, оптимізація запитів), SQL, T-SQL</p></div><div class="skill"><h3>Інфраструктура</h3><p>Docker, Kubernetes, Helm, Prometheus, Grafana</p></div><div class="skill"><h3>Лідерство</h3><p>Тімлід з 2020, перехід команди з десктопу на веб, AI-вебінар для всієї компанії (300+ людей), впровадження Copilot, технічний напрям, code review, менторство, викладання</p></div></div>
+    </section>
+
+    <section>
+      <h2><span>Сертифікати</span></h2>
+      <ul class="list"><li><span><a href="https://lms.robotdreams.cc/certificate/cad2279ae1d188dd075e99d1a5432ccc" target="_blank" rel="noopener">Prometheus and Grafana · robot_dreams <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></span><span class="v">жовт. 2025</span></li><li><span><a href="https://www.udemy.com/certificate/UC-154956ac-95b0-42d3-a560-d9fe3d67143d/" target="_blank" rel="noopener">Oracle SQL Performance Tuning Masterclass · Udemy <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></span><span class="v">лист. 2023</span></li></ul>
+    </section>
+
+    <section>
+      <h2><span>Мови та освіта</span></h2>
+      <ul class="list"><li><span>Криворізький технічний університет</span><span class="v">Університет</span></li><li><span>Українська</span><span class="v">Рідна</span></li><li><span>Англійська</span><span class="v">C1 · Advanced</span></li></ul>
+    </section>
+
+    <footer><span>© 2026 Григорій Манаєнков</span><span>hman.pro</span></footer>
   </div>
-
-  <footer>
-    <span>© 2026 Григорій Манаєнков · manaenkov.gregory@gmail.com</span>
-    <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a>
-  </footer>
 </div>
 </main>
-
+<div class="pal-back" id="pal" hidden>
+  <div class="pal" role="dialog" aria-modal="true" aria-label="Command palette">
+    <input id="pal-input" type="text" autocomplete="off" spellcheck="false">
+    <ul id="pal-list" role="listbox"></ul>
+  </div>
+</div>
 <script>
-var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>', MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>', COPY = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>', CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+var SUN = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg>", MOON = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z\"/></svg>", COPY = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"11\" rx=\"2\"/><path d=\"M5 15V5a1 1 0 0 1 1-1h10\"/></svg>", CHECK = "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12.5 4.5 4.5L19 7.5\"/></svg>", CMDS = {"en": {"placeholder": "Type a command…", "empty": "Nothing found", "pdf": "Download PDF", "lang": "Перейти на українську", "theme": "Toggle light / dark theme", "copy": "Copy email", "linkedin": "Open LinkedIn", "github": "Open GitHub", "go_impact": "Go to Impact", "go_exp": "Go to Experience", "go_proj": "Go to Projects", "go_skills": "Go to Skills"}, "uk": {"placeholder": "Введіть команду…", "empty": "Нічого не знайдено", "pdf": "Завантажити PDF", "lang": "Switch to English", "theme": "Перемкнути світлу / темну тему", "copy": "Скопіювати email", "linkedin": "Відкрити LinkedIn", "github": "Відкрити GitHub", "go_impact": "Перейти до впливу", "go_exp": "Перейти до досвіду", "go_proj": "Перейти до проєктів", "go_skills": "Перейти до навичок"}}, HAS_PDF = true;
+var LINKS = {linkedin: "https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/", github: "https://github.com/ManGregory", email: "manaenkov.gregory@gmail.com"};
 (function () {
-  var LANGS = ["en", "uk"];
-  function store(v) { try { if (v) localStorage.setItem("lang", v); return localStorage.getItem("lang"); } catch (e) { return null; } }
+  var root = document.documentElement, LANGS = ["en", "uk"], lang = "en";
+  function store(k, v) { try { if (v !== undefined) localStorage.setItem(k, v); return localStorage.getItem(k); } catch (e) { return null; } }
   function fromHash() { var h = (location.hash || "").slice(1); return LANGS.indexOf(h) > -1 ? h : null; }
-  function apply(lang) {
-    document.querySelectorAll(".lang-block").forEach(function (b) { b.hidden = b.dataset.lang !== lang; });
-    document.querySelectorAll("[data-set-lang]").forEach(function (btn) { btn.setAttribute("aria-pressed", String(btn.dataset.setLang === lang)); });
-    document.documentElement.lang = lang;
-    document.title = lang === "uk" ? "Григорій Манаєнков" : "Hryhorii Manaienkov";
+
+  /* ---------- git graph ---------- */
+  function drawGraph(block) {
+    var g = block.querySelector(".graph"); if (!g || !g.offsetParent) return;
+    var svg = g.querySelector("svg.wires"), cs = getComputedStyle(g);
+    var lane = parseFloat(getComputedStyle(root).getPropertyValue("--lane")) || 18;
+    var nodes = {};
+    g.querySelectorAll(".commit").forEach(function (el) {
+      var l = +el.dataset.lane, title = el.querySelector(".c-meta");
+      nodes[el.dataset.id] = { el: el, lane: l, x: 8 + l * lane, y: title.offsetTop + title.offsetHeight / 2 };
+    });
+    var colors = ["var(--accent)", "var(--add)", "var(--hunk)", "var(--amber)"];
+    var out = "";
+    function wire(a, b, color) {
+      var r = 14, d;
+      if (a.x === b.x) d = "M" + a.x + " " + a.y + " L" + b.x + " " + b.y;
+      else d = "M" + a.x + " " + a.y + " L" + a.x + " " + (b.y + 2 * r) + " C" + a.x + " " + (b.y + r * .6) + " " + b.x + " " + (b.y + r * 1.4) + " " + b.x + " " + b.y;
+      out += '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linecap="round"/>';
+    }
+    Object.keys(nodes).forEach(function (id) {
+      var n = nodes[id], p = n.el.dataset.parent, m = n.el.dataset.merge;
+      if (p && nodes[p]) wire(nodes[p], n, colors[m ? n.lane : nodes[p].lane]);
+      if (m && nodes[m]) {
+        var t = nodes[m], y = n.y - 34;
+        out += '<path d="M' + n.x + ' ' + n.y + ' C' + n.x + ' ' + (y + 14) + ' ' + t.x + ' ' + (y + 18) + ' ' + t.x + ' ' + y + '" fill="none" stroke="' + colors[n.lane] + '" stroke-width="2" stroke-dasharray="3 4" stroke-linecap="round"/>';
+      }
+    });
+    Object.keys(nodes).forEach(function (id) {
+      var n = nodes[id], head = n.el.dataset.head;
+      out += '<circle cx="' + n.x + '" cy="' + n.y + '" r="6" fill="' + (head ? colors[n.lane] : "var(--bg)") + '" stroke="' + colors[n.lane] + '" stroke-width="2.5"/>';
+    });
+    svg.innerHTML = out;
   }
+  function drawVisible() { document.querySelectorAll(".lang-block").forEach(function (b) { if (!b.hidden) drawGraph(b); }); }
+
+  /* ---------- language ---------- */
+  function apply(l) {
+    lang = l;
+    document.querySelectorAll(".lang-block").forEach(function (b) { b.hidden = b.dataset.lang !== l; });
+    document.querySelectorAll("[data-set-lang]").forEach(function (btn) { btn.setAttribute("aria-pressed", String(btn.dataset.setLang === l)); });
+    root.lang = l;
+    document.title = l === "uk" ? "Григорій Манаєнков" : "Hryhorii Manaienkov";
+    drawVisible();
+  }
+  function setLang(l) { apply(l); store("lang", l); try { history.replaceState(null, "", "#" + l); } catch (e) {} }
   var nav = (navigator.language || "").toLowerCase();
-  var initial = fromHash() || store() || (/^(uk|ru)/.test(nav) ? "uk" : "en");
-  apply(initial);
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-set-lang]");
-    if (!btn) return;
-    var l = btn.dataset.setLang;
-    apply(l); store(l);
-    try { history.replaceState(null, "", "#" + l); } catch (err) {}
-  });
-  var root = document.documentElement;
+  apply(fromHash() || store("lang") || (/^(uk|ru)/.test(nav) ? "uk" : "en"));
+  window.addEventListener("hashchange", function () { var h = fromHash(); if (h) apply(h); });
+
+  /* ---------- theme ---------- */
   var mq = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
-  function getTheme() { try { return localStorage.getItem("theme"); } catch (e) { return null; } }
   function effective() { return root.dataset.theme || (mq && mq.matches ? "dark" : "light"); }
   function paintToggle() {
     var dark = effective() === "dark";
     document.querySelectorAll("[data-theme-toggle]").forEach(function (b) { b.innerHTML = dark ? SUN : MOON; b.setAttribute("aria-pressed", String(dark)); });
   }
-  var saved = getTheme(); if (saved === "light" || saved === "dark") root.dataset.theme = saved;
-  paintToggle();
-  if (mq && mq.addEventListener) mq.addEventListener("change", paintToggle);
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest("[data-theme-toggle]")) return;
-    var next = effective() === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try { localStorage.setItem("theme", next); } catch (err) {}
-    paintToggle();
-  });
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-copy]");
-    if (!btn) return;
-    var text = btn.dataset.copy;
+  function toggleTheme() { var t = effective() === "dark" ? "light" : "dark"; root.dataset.theme = t; store("theme", t); paintToggle(); }
+  var saved = store("theme"); if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+  paintToggle(); if (mq && mq.addEventListener) mq.addEventListener("change", paintToggle);
+
+  /* ---------- copy ---------- */
+  function copyEmail(btn) {
     function done() {
-      btn.classList.add("done"); btn.innerHTML = CHECK; btn.title = btn.dataset.done;
-      setTimeout(function () { btn.classList.remove("done"); btn.innerHTML = COPY; btn.title = btn.getAttribute("aria-label"); }, 1600);
+      if (!btn) return;
+      btn.classList.add("done"); btn.innerHTML = CHECK;
+      setTimeout(function () { btn.classList.remove("done"); btn.innerHTML = COPY; }, 1600);
     }
-    function fallback() {
-      var el = btn.parentNode.querySelector(".mail-addr");
-      var r = document.createRange(); r.selectNodeContents(el);
-      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
-    else fallback();
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(LINKS.email).then(done, function () {});
+  }
+
+  /* ---------- palette ---------- */
+  var pal = document.getElementById("pal"), input = document.getElementById("pal-input"), list = document.getElementById("pal-list"), sel = 0, shown = [];
+  function openLink(url) { var a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); }
+  function goTo(id) { var el = document.getElementById(id + "-" + lang); if (el) el.scrollIntoView(); }
+  function commands() {
+    var t = CMDS[lang], list = [];
+    if (HAS_PDF) list.push({ label: t.pdf, run: function () { openLink("resume-" + lang + ".pdf"); } });
+    list.push({ label: t.lang, run: function () { setLang(lang === "en" ? "uk" : "en"); } });
+    list.push({ label: t.theme, run: toggleTheme });
+    list.push({ label: t.copy, k: LINKS.email, run: function () { copyEmail(document.querySelector('.lang-block:not([hidden]) .copy')); } });
+    list.push({ label: t.go_impact, run: function () { goTo("impact"); } });
+    list.push({ label: t.go_exp, run: function () { goTo("experience"); } });
+    list.push({ label: t.go_proj, run: function () { goTo("projects"); } });
+    list.push({ label: t.go_skills, run: function () { goTo("skills"); } });
+    list.push({ label: t.linkedin, run: function () { openLink(LINKS.linkedin); } });
+    list.push({ label: t.github, run: function () { openLink(LINKS.github); } });
+    return list;
+  }
+  function render() {
+    var q = input.value.trim().toLowerCase();
+    shown = commands().filter(function (c) { return !q || c.label.toLowerCase().indexOf(q) > -1; });
+    if (sel >= shown.length) sel = Math.max(0, shown.length - 1);
+    list.innerHTML = shown.length ? shown.map(function (c, i) {
+      return '<li role="option" data-i="' + i + '" aria-selected="' + (i === sel) + '"><span>' + c.label + '</span>' + (c.k ? '<span class="k">' + c.k + '</span>' : '') + '</li>';
+    }).join("") : '<li class="empty">' + CMDS[lang].empty + '</li>';
+  }
+  function openPal() { pal.hidden = false; input.value = ""; input.placeholder = CMDS[lang].placeholder; sel = 0; render(); input.focus(); }
+  function closePal() { pal.hidden = true; }
+  function run(i) { var c = shown[i]; closePal(); if (c) c.run(); }
+  input.addEventListener("input", function () { sel = 0; render(); });
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowDown") { sel = Math.min(sel + 1, shown.length - 1); render(); e.preventDefault(); }
+    else if (e.key === "ArrowUp") { sel = Math.max(sel - 1, 0); render(); e.preventDefault(); }
+    else if (e.key === "Enter") { run(sel); e.preventDefault(); }
+    else if (e.key === "Escape") { closePal(); }
   });
-  window.addEventListener("hashchange", function () { var h = fromHash(); if (h) apply(h); });
+  list.addEventListener("click", function (e) { var li = e.target.closest("li[data-i]"); if (li) run(+li.dataset.i); });
+  pal.addEventListener("click", function (e) { if (e.target === pal) closePal(); });
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal.hidden ? openPal() : closePal(); }
+    else if (e.key === "Escape" && !pal.hidden) closePal();
+  });
+
+  /* ---------- clicks ---------- */
+  document.addEventListener("click", function (e) {
+    var t;
+    if ((t = e.target.closest("[data-set-lang]"))) setLang(t.dataset.setLang);
+    else if (e.target.closest("[data-theme-toggle]")) toggleTheme();
+    else if ((t = e.target.closest("[data-copy]"))) copyEmail(t);
+    else if (e.target.closest("[data-open-palette]")) openPal();
+  });
+
+  /* ---------- redraw graph on layout changes ---------- */
+  if (window.ResizeObserver) new ResizeObserver(drawVisible).observe(document.body);
+  else window.addEventListener("resize", drawVisible);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawVisible);
+  window.addEventListener("load", drawVisible);
 })();
 </script>
 </body>
