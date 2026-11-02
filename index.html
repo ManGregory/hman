@@ -133,8 +133,9 @@ h2 span + span { letter-spacing: .02em; text-transform: none; }
 .ln.ctx .t { color: var(--muted); }
 .review { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .review-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); font: 12.5px/1.4 var(--mono); color: var(--muted); }
-.avatar { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--hunk-bg); color: var(--hunk); font: 700 10px var(--mono); flex: none; }
+.avatar { width: 24px; height: 24px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--hunk-bg); color: var(--hunk); font: 700 11px var(--mono); flex: none; }
 .review-head b { color: var(--ink); font-weight: 500; }
+.review-head > span:nth-child(2) { flex: 1 1 180px; min-width: 0; }
 .verdict { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; color: var(--add); border: 1px solid currentColor; border-radius: 999px; padding: 1px 9px; font-weight: 500; }
 .verdict svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .review-body { padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 10px; }
@@ -155,7 +156,7 @@ h2 span + span { letter-spacing: .02em; text-transform: none; }
 .hash { color: var(--accent); }
 .branch { border-radius: 4px; padding: 0 7px; border: 1px solid currentColor; }
 .l0 { color: var(--accent); } .l1 { color: var(--add); } .l2 { color: var(--hunk); } .l3 { color: var(--amber); }
-.pill { font: 500 10.5px/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--bg); background: var(--add); border-radius: 999px; padding: 0 8px; }
+.pill { font: 500 11px/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--bg); background: var(--add); border-radius: 999px; padding: 0 8px; }
 .c-title { font: 600 1.15rem/1.35 var(--display); margin: 0; }
 .c-title .org { color: var(--muted); font-weight: 500; }
 .c-text { margin: 0; padding-left: 18px; max-width: 68ch; display: flex; flex-direction: column; gap: 4px; }
@@ -225,8 +226,11 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
   .main { padding-block: 48px; gap: 52px; }
   .thesis { font-size: 1.15rem; }
 }
+@media (min-width: 641px) and (max-width: 960px) {
+  .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 640px) {
-  :root { --lane: 13px; }
+  :root { --lane: 10px; }
   .skills, .list { grid-template-columns: minmax(0, 1fr); }
   .fact { padding: 10px; }
   .fact b { font-size: 1.15rem; }
@@ -301,7 +305,7 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
     </div>
     <h1>Hryhorii Manaienkov</h1>
     <p class="role"><strong>AI Engineer</strong> · ex-Team Lead · Java/Angular, .NET</p>
-    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
+    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro" target="_blank" rel="noopener">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory" target="_blank" rel="noopener">github.com/ManGregory</a></p>
     <div class="glance-wrap"><h2><span>At a glance</span></h2><dl class="glance"><div class="g-row"><dt>Experience</dt><dd>14 years, 11 of them at ISD</dd></div><div class="g-row"><dt>Leadership</dt><dd>Team lead 2020–2026, 8–13 people</dd></div><div class="g-row"><dt>Domain</dt><dd>Clinical laboratory software (LIS)</dd></div><div class="g-row"><dt>Now</dt><dd>Agentic SDLC on Claude Code</dd></div></dl></div>
     <div class="contact-wrap">
       <h2><span>Contact</span></h2>
@@ -340,35 +344,35 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
       <div class="graph"><svg class="wires" aria-hidden="true"></svg><article class="commit" data-id="ai" data-lane="0" data-parent="teamlead" data-head="1">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">a7c41e2</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>Jun 2026 – now</span><span class="pill">Current</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">fba13df</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>Jun 2026 – now</span><span class="pill">Current</span></div>
           <h3 class="c-title">AI Engineer <span class="org">· ISD</span></h3>
           <ul class="c-text"><li>Designing and rolling out an agentic SDLC at ISD on Claude Code, GitHub Spec Kit and GitHub Actions.</li><li>Built its AI code review stage, now running on two large repositories (Java/Angular and Python) and several smaller ones.</li><li>Tested it on 25 known bugs from one repository: the review caught 13 of them (52%) in the changes that introduced them.</li></ul><ul class="stack"><li>Claude Code</li><li>Claude API</li><li>GitHub Spec Kit</li><li>GitHub Actions</li><li>MCP</li></ul>
         </div>
       </article><article class="commit" data-id="teamlead" data-lane="1" data-parent="genetics">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">5d0b93f</span><span class="branch l1">isd/lis-results-web</span><span>May 2022 – Jun 2026</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">b4fc9e7</span><span class="branch l1">isd/lis-results-web</span><span>May 2022 – Jun 2026</span></div>
           <h3 class="c-title">Team Lead / Full Stack Developer <span class="org">· ISD</span></h3>
           <p class="merge">↳ merge: whole team moved desktop → web</p><ul class="c-text"><li>Led my team of 8–13 people from the C#/.NET desktop genetics module to the Results area of LIS, a Java/Angular web product for lab results, and coached it through the new stack.</li><li>Took our team&rsquo;s part of the product live with its first client; led my area on emergency support and client go-lives.</li><li>Fixed performance bottlenecks in 2023–2025, mostly in Oracle: execution plans and query optimization.</li><li>Built Grafana dashboards for the Results area that other LIS teams adopted.</li><li>Introduced GitHub Copilot in the team with the product&rsquo;s first custom instructions; in 2026 ran the company-wide intro to AI in development for 300+ people, in English.</li></ul><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li><li>Grafana</li></ul>
         </div>
       </article><article class="commit" data-id="hillel" data-lane="3" data-parent="genetics" data-merge="genetics">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">e21f7aa</span><span class="branch l3">side/teaching</span><span>Feb – Sep 2020</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">d7099a2</span><span class="branch l3">side/teaching</span><span>Feb – Sep 2020</span></div>
           <h3 class="c-title">Course Instructor <span class="org">· Hillel IT School</span></h3>
           <ul class="c-text"><li>Taught C#/.NET courses, from fundamentals to students&rsquo; first projects.</li></ul>
         </div>
       </article><article class="commit" data-id="genetics" data-lane="2" data-parent="kzrk">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">3b9c0d4</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>Oct 2015 – May 2022</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">ae5dbd6</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>Oct 2015 – May 2022</span></div>
           <h3 class="c-title">.NET Developer → Team Lead <span class="org">· ISD</span></h3>
           <ul class="c-text"><li>Built and maintained the LIS genetics module, a desktop app for genetic test workflows, results processing and reporting, where clinical data has to be exactly right.</li><li>Grew to senior level and became the team&rsquo;s lead in 2020.</li><li>On emergency support on-call from 2017, 2–4 weeks a year, resolving urgent customer issues.</li></ul><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul>
         </div>
       </article><article class="commit" data-id="kzrk" data-lane="3">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">9f12e6b</span><span class="branch l3">kzrk/erp-delphi</span><span>Jun 2012 – Oct 2015</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">0c0dd11</span><span class="branch l3">kzrk/erp-delphi</span><span>Jun 2012 – Oct 2015</span></div>
           <h3 class="c-title">Software Engineer <span class="org">· PJSC KZRK</span></h3>
           <ul class="c-text"><li>Built and maintained the company&rsquo;s in-house ERP in Delphi: budgeting, tenders, procurement.</li></ul><ul class="stack"><li>Delphi</li><li>SQL</li></ul>
         </div>
@@ -377,7 +381,7 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
 
     <section id="projects-en">
       <h2><span>Projects</span><span>how they work</span></h2>
-      <div class="projects"><article class="proj"><span class="tag">ISD · internal</span><h3>Agentic SDLC</h3><p>AI agents built into the development process, from spec to merge. Features start as specs in GitHub Spec Kit, Claude Code agents run in GitHub Actions, and a custom AI review process is the quality gate on every pull request.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · internal</span><h3>AI code review</h3><p>Reviews each pull request from two angles: code quality (best practices, efficiency) and fit to the requirements and documentation in the linked issue tracker. Evaluated retrospectively: run on the changes behind 25 known bugs from one repository, it caught 13.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">open source</span><h3><a href="https://github.com/ManGregory/claude-mentor" target="_blank" rel="noopener">claude-mentor <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></h3><p>A custom Claude command for learning any topic that keeps your progress between sessions.</p><ul class="stack"><li>Claude Code</li></ul></article></div>
+      <div class="projects"><article class="proj"><span class="tag">ISD · internal</span><h3>Agentic SDLC</h3><p>AI agents built into the development process, from spec to merge. Features start as specs in GitHub Spec Kit, Claude Code agents run in GitHub Actions, and a custom AI review process is the quality gate on every pull request.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · internal</span><h3>AI code review</h3><p>Reviews each pull request from two angles: code quality (best practices, efficiency) and fit to the requirements and documentation in the linked issue tracker. Evaluated retrospectively: run on the changes behind 25 known bugs from one repository, it caught 13.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">personal</span><h3>claude-mentor</h3><p>A custom Claude command for learning any topic that keeps your progress between sessions.</p><ul class="stack"><li>Claude Code</li></ul></article></div>
     </section>
 
     <section id="skills-en">
@@ -409,7 +413,7 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
     </div>
     <h1>Григорій Манаєнков</h1>
     <p class="role"><strong>AI Engineer</strong> · раніше тімлід · Java/Angular, .NET</p>
-    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory">github.com/ManGregory</a></p>
+    <p class="print-only contact">manaenkov.gregory@gmail.com · <a href="https://hman.pro" target="_blank" rel="noopener">hman.pro</a> · <a href="https://www.linkedin.com/in/hryhorii-manaienkov-9b317ab7/" target="_blank" rel="noopener">linkedin.com/in/hryhorii-manaienkov-9b317ab7</a> · <a href="https://github.com/ManGregory" target="_blank" rel="noopener">github.com/ManGregory</a></p>
     <div class="glance-wrap"><h2><span>Коротко</span></h2><dl class="glance"><div class="g-row"><dt>Досвід</dt><dd>14 років, з них 11 в ISD</dd></div><div class="g-row"><dt>Лідерство</dt><dd>Тімлід 2020–2026, команда 8–13 людей</dd></div><div class="g-row"><dt>Домен</dt><dd>Лабораторні інформаційні системи (LIS)</dd></div><div class="g-row"><dt>Зараз</dt><dd>Agentic SDLC на Claude Code</dd></div></dl></div>
     <div class="contact-wrap">
       <h2><span>Контакти</span></h2>
@@ -448,35 +452,35 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
       <div class="graph"><svg class="wires" aria-hidden="true"></svg><article class="commit" data-id="ai" data-lane="0" data-parent="teamlead" data-head="1">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">a7c41e2</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>черв. 2026 – досі</span><span class="pill">Зараз</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">fba13df</span><span class="branch l0">isd/ai-agentic-sdlc</span><span>черв. 2026 – досі</span><span class="pill">Зараз</span></div>
           <h3 class="c-title">AI Engineer <span class="org">· ISD</span></h3>
           <ul class="c-text"><li>Проєктую та впроваджую agentic SDLC в ISD на Claude Code, GitHub Spec Kit і GitHub Actions.</li><li>Створив етап AI code review, який працює на двох великих репозиторіях (Java/Angular і Python) та кількох менших.</li><li>Перевірив його на 25 відомих багах з одного репозиторію: рев&rsquo;ю знайшло 13 з них (52%) у змінах, які їх внесли.</li></ul><ul class="stack"><li>Claude Code</li><li>Claude API</li><li>GitHub Spec Kit</li><li>GitHub Actions</li><li>MCP</li></ul>
         </div>
       </article><article class="commit" data-id="teamlead" data-lane="1" data-parent="genetics">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">5d0b93f</span><span class="branch l1">isd/lis-results-web</span><span>трав. 2022 – черв. 2026</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">b4fc9e7</span><span class="branch l1">isd/lis-results-web</span><span>трав. 2022 – черв. 2026</span></div>
           <h3 class="c-title">Team Lead / Full Stack Developer <span class="org">· ISD</span></h3>
           <p class="merge">↳ merge: уся команда перейшла з десктопу на веб</p><ul class="c-text"><li>Перевів свою команду з 8–13 людей з десктопного модуля генетики на C#/.NET у напрям Results системи LIS — веб-продукт на Java/Angular для роботи з результатами аналізів — і допоміг їй освоїти новий стек.</li><li>Вивів частину продукту, за яку відповідала команда, у продакшн до першого клієнта; вів свій напрям на чергуваннях і запусках клієнтів.</li><li>У 2023–2025 усував вузькі місця продуктивності, здебільшого в Oracle: execution plans, оптимізація запитів.</li><li>Зробив дашборди Grafana для напряму Results, які взяли інші команди LIS.</li><li>Запровадив GitHub Copilot у команді з першими кастомними інструкціями для продукту; у 2026 провів вступний вебінар про AI в розробці для всієї компанії — 300+ учасників, англійською.</li></ul><ul class="stack"><li>Java</li><li>Spring Boot</li><li>Angular</li><li>TypeScript</li><li>Oracle</li><li>Grafana</li></ul>
         </div>
       </article><article class="commit" data-id="hillel" data-lane="3" data-parent="genetics" data-merge="genetics">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">e21f7aa</span><span class="branch l3">side/teaching</span><span>лют. – вер. 2020</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">d7099a2</span><span class="branch l3">side/teaching</span><span>лют. – вер. 2020</span></div>
           <h3 class="c-title">Викладач курсу <span class="org">· Hillel IT School</span></h3>
           <ul class="c-text"><li>Викладав курси C#/.NET: від основ до перших проєктів студентів.</li></ul>
         </div>
       </article><article class="commit" data-id="genetics" data-lane="2" data-parent="kzrk">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">3b9c0d4</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>жовт. 2015 – трав. 2022</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">ae5dbd6</span><span class="branch l2">isd/lis-genetics-dotnet</span><span>жовт. 2015 – трав. 2022</span></div>
           <h3 class="c-title">.NET Developer → Team Lead <span class="org">· ISD</span></h3>
           <ul class="c-text"><li>Розробляв і підтримував модуль генетики LIS — десктопний застосунок для генетичних досліджень, обробки результатів і звітності, де клінічні дані мають бути абсолютно точними.</li><li>Виріс до senior-рівня, а у 2020 став тімлідом команди.</li><li>З 2017 року на чергуваннях emergency support (2–4 тижні на рік): розбирався з терміновими проблемами клієнтів.</li></ul><ul class="stack"><li>C#</li><li>.NET</li><li>WinForms</li><li>SQL</li></ul>
         </div>
       </article><article class="commit" data-id="kzrk" data-lane="3">
         <div class="c-gutter" aria-hidden="true"></div>
         <div class="c-body">
-          <div class="c-meta"><span class="hash">9f12e6b</span><span class="branch l3">kzrk/erp-delphi</span><span>черв. 2012 – жовт. 2015</span></div>
+          <div class="c-meta"><span class="hash" title="sha1(title, company, dates, bullets)">0c0dd11</span><span class="branch l3">kzrk/erp-delphi</span><span>черв. 2012 – жовт. 2015</span></div>
           <h3 class="c-title">Software Engineer <span class="org">· ПАТ «КЗРК»</span></h3>
           <ul class="c-text"><li>Розробляв і підтримував внутрішню ERP-систему компанії на Delphi: бюджетування, тендери, закупівлі.</li></ul><ul class="stack"><li>Delphi</li><li>SQL</li></ul>
         </div>
@@ -485,7 +489,7 @@ footer { font: 12px var(--mono); color: var(--muted); display: flex; flex-wrap: 
 
     <section id="projects-uk">
       <h2><span>Проєкти</span><span>як вони працюють</span></h2>
-      <div class="projects"><article class="proj"><span class="tag">ISD · внутрішній</span><h3>Agentic SDLC</h3><p>AI-агенти, вбудовані в процес розробки, від специфікації до merge. Фічі починаються зі специфікацій у GitHub Spec Kit, агенти Claude Code працюють у GitHub Actions, а власний процес AI-рев&rsquo;ю контролює якість кожного pull request-у.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · внутрішній</span><h3>AI code review</h3><p>Перевіряє кожен pull request з двох боків: якість коду (best practices, ефективність) і відповідність вимогам та документації з пов&rsquo;язаного баг-трекера. Оцінено ретроспективно: на змінах, що внесли 25 відомих багів з одного репозиторію, рев&rsquo;ю знайшло 13.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">open source</span><h3><a href="https://github.com/ManGregory/claude-mentor" target="_blank" rel="noopener">claude-mentor <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></h3><p>Кастомна команда Claude для вивчення будь-якої теми, що зберігає прогрес між сесіями.</p><ul class="stack"><li>Claude Code</li></ul></article></div>
+      <div class="projects"><article class="proj"><span class="tag">ISD · внутрішній</span><h3>Agentic SDLC</h3><p>AI-агенти, вбудовані в процес розробки, від специфікації до merge. Фічі починаються зі специфікацій у GitHub Spec Kit, агенти Claude Code працюють у GitHub Actions, а власний процес AI-рев&rsquo;ю контролює якість кожного pull request-у.</p><ul class="stack"><li>GitHub Spec Kit</li><li>Claude Code</li><li>GitHub Actions</li></ul></article><article class="proj"><span class="tag">ISD · внутрішній</span><h3>AI code review</h3><p>Перевіряє кожен pull request з двох боків: якість коду (best practices, ефективність) і відповідність вимогам та документації з пов&rsquo;язаного баг-трекера. Оцінено ретроспективно: на змінах, що внесли 25 відомих багів з одного репозиторію, рев&rsquo;ю знайшло 13.</p><ul class="stack"><li>Claude Code</li><li>Multi-agent</li><li>Issue trackers</li></ul></article><article class="proj"><span class="tag">особистий</span><h3>claude-mentor</h3><p>Кастомна команда Claude для вивчення будь-якої теми, що зберігає прогрес між сесіями.</p><ul class="stack"><li>Claude Code</li></ul></article></div>
     </section>
 
     <section id="skills-uk">
